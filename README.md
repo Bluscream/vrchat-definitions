@@ -11,4 +11,4 @@ Centralized repository containing definitions for VRChat launch arguments, envir
 
 ## License
 
-GPL-3.0
+[MIT](LICENSE)
