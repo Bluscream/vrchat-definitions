@@ -559,6 +559,27 @@
                 <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
                 <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all">^(mailbox|immediate|fifo|fifo_relaxed)$</td>
             </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">PROTON_AVPRO_ENABLE</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">switch</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Enables AVPro video player compatibility layer in Proton (fixes VRChat video players / MPEG-TS / HLS / RTSP streams in Proton-GE-RTSP / custom builds)</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap">1</td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all">^[01]$</td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">PROTON_USE_MEDIA_FOUNDATION</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">switch</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Enables Wine Windows Media Foundation (WMF) implementation for Unity AVPro video playback</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap">1</td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all">^[01]$</td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">WINE_AVPRO_ENABLE</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">switch</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Enables Wine AVPro video player decoding layer for media playback in VRChat</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap">1</td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all">^[01]$</td>
+            </tr>
                     </tbody>
                 </table>
             </div>
