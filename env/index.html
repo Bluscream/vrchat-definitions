@@ -1,536 +1,563 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VRChat Environment Variables - VRChat Definitions</title>
+    <title>Environment Variables - VRChat.community Definitions</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
     <style>body { font-family: "Inter", sans-serif; }</style>
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen p-6 flex flex-col">
-    <div class="max-w-7xl w-full mx-auto flex-1 flex flex-col gap-4">
-        <div class="flex flex-wrap items-center justify-between gap-4 bg-slate-900 border border-slate-800 p-4 rounded-xl shadow-lg">
-            <div class="flex items-center gap-3">
-                <a href="../index.html" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs font-semibold border border-slate-700 transition-colors">← Back to Index</a>
-                <h1 class="text-xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">VRChat Environment Variables</h1>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col">
+    
+    <header class="border-b border-slate-800 bg-slate-900/90 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-6">
+                <a href="../index.html" class="flex items-center gap-2 text-white font-bold text-lg hover:opacity-90 transition-opacity">
+                    <span class="bg-gradient-to-r from-teal-400 via-cyan-400 to-blue-500 bg-clip-text text-transparent">VRChat.community</span>
+                    <span class="text-xs px-2 py-0.5 rounded-full bg-cyan-950 text-cyan-400 border border-cyan-800/60 font-mono font-medium">Definitions</span>
+                </a>
+                <nav class="hidden md:flex items-center gap-4 text-xs font-medium text-slate-400">
+                    <a href="../cmdline/index.html" class="hover:text-cyan-400 transition-colors">CmdLine Flags</a>
+                    <a href="../env/index.html" class="hover:text-cyan-400 transition-colors">Env Vars</a>
+                    <a href="../registry/index.html" class="hover:text-cyan-400 transition-colors">Registry</a>
+                    <a href="../config/index.html" class="hover:text-cyan-400 transition-colors">Config Schema</a>
+                </nav>
             </div>
             <div class="flex items-center gap-3">
-                <input type="text" id="searchInput" onkeyup="filterTable()" placeholder="Search flags, descriptions..." class="px-3 py-1.5 text-xs bg-slate-950 border border-slate-800 rounded-lg w-64 focus:outline-none focus:border-cyan-500 font-mono">
-                <a href="../env.csv" download class="px-3 py-1.5 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-slate-950 font-bold text-xs transition-colors">Download Raw CSV</a>
+                <a href="https://github.com/Bluscream/vrchat-definitions" target="_blank" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs font-semibold text-slate-200 transition-all flex items-center gap-2">
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                    GitHub Repo
+                </a>
+            </div>
+        </div>
+    </header>
+    
+
+    <div class="max-w-7xl w-full mx-auto px-6 py-6 flex-1 flex flex-col gap-5">
+        <div class="flex flex-wrap items-center justify-between gap-4 bg-slate-900/80 border border-slate-800 p-5 rounded-2xl shadow-xl">
+            <div>
+                <span class="text-xs font-semibold uppercase tracking-wider text-blue-400">Proton / Wine / Graphics</span>
+                <h1 class="text-2xl font-bold text-white mt-1">Environment Variables</h1>
+            </div>
+            <div class="flex items-center gap-3">
+                <input type="text" id="searchInput" onkeyup="filterTable()" placeholder="Search flags, descriptions..." class="px-3.5 py-2 text-xs bg-slate-950 border border-slate-800 rounded-xl w-72 focus:outline-none focus:border-blue-500 font-mono text-slate-200">
+                <a href="../env.csv" download class="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-slate-950 font-bold text-xs transition-colors shadow-lg shadow-blue-600/20">
+                    Download Raw CSV
+                </a>
             </div>
         </div>
 
-        <div class="flex-1 bg-slate-900 border border-slate-800 rounded-xl overflow-hidden shadow-xl flex flex-col">
+        <div class="flex-1 bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden shadow-2xl flex flex-col">
             <div class="overflow-x-auto flex-1">
                 <table class="w-full text-left text-xs border-collapse" id="defTable">
-                    <thead class="bg-slate-800/80 text-slate-300 font-semibold border-b border-slate-700 sticky top-0 backdrop-blur-xs">
+                    <thead class="bg-slate-900 text-slate-300 font-semibold border-b border-slate-800 sticky top-0 backdrop-blur-md">
                         <tr>
-                            <th class="p-3 border-r border-slate-700/60">Name</th>
-                            <th class="p-3 border-r border-slate-700/60 w-24">Type</th>
-                            <th class="p-3 border-r border-slate-700/60">Description & Notes</th>
-                            <th class="p-3 border-r border-slate-700/60 w-28">Default</th>
-                            <th class="p-3 w-48">Pattern</th>
+                            <th class="p-3.5 w-48">Parameter Name</th>
+                            <th class="p-3.5 w-24">Value Type</th>
+                            <th class="p-3.5">Description & Purpose</th>
+                            <th class="p-3.5 w-32">Default Value</th>
+                            <th class="p-3.5 w-48">Pattern Validation</th>
                         </tr>
                     </thead>
-                    <tbody class="divide-y divide-slate-800/60 text-slate-300 font-mono">
+                    <tbody class="divide-y divide-slate-800/60 text-slate-300">
                         
-            <tr class="hover:bg-slate-800/40 transition-colors">
-                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">PROTON_LOG</td>
-                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">switch</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Enables Proton/Wine full debug log output written to ~/steam-438100.log<br><br>Useful for diagnosing Proton/VRChat launch failures. Creates large log files. Source: ProtonPlus</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap"></td>
-                <td class="p-3 text-emerald-400 text-[0.7rem] break-all"></td>
-            </tr>
-            <tr class="hover:bg-slate-800/40 transition-colors">
-                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">PROTON_LOG_DIR</td>
-                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">string</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Overrides the directory where Proton log files are written<br><br>e.g. PROTON_LOG_DIR=/tmp — prevents log clutter in home directory</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap">%HOME%</td>
-                <td class="p-3 text-emerald-400 text-[0.7rem] break-all">^/.+$</td>
-            </tr>
-            <tr class="hover:bg-slate-800/40 transition-colors">
-                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">PROTON_ENABLE_NVAPI</td>
-                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">switch</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Enables NVIDIA NVAPI DLL emulation for DLSS and NVIDIA-specific features (e.g. Reflex).<br><br>Source: ProtonPlus</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap"></td>
-                <td class="p-3 text-emerald-400 text-[0.7rem] break-all"></td>
-            </tr>
-            <tr class="hover:bg-slate-800/40 transition-colors">
-                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">PROTON_ENABLE_NGX_UPDATER</td>
-                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">switch</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Updates DLSS components for supported games via NVIDIA NGX<br><br>Source: ProtonPlus</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap"></td>
-                <td class="p-3 text-emerald-400 text-[0.7rem] break-all"></td>
-            </tr>
-            <tr class="hover:bg-slate-800/40 transition-colors">
-                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">PROTON_DLSS_INDICATOR</td>
-                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">switch</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Shows an in-game DLSS status indicator<br><br>Source: ProtonPlus</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap"></td>
-                <td class="p-3 text-emerald-400 text-[0.7rem] break-all"></td>
-            </tr>
-            <tr class="hover:bg-slate-800/40 transition-colors">
-                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">PROTON_NVIDIA_LIBS</td>
-                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">switch</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Enables NVIDIA-specific proprietary libraries inside Proton<br><br>Source: ProtonPlus</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap"></td>
-                <td class="p-3 text-emerald-400 text-[0.7rem] break-all"></td>
-            </tr>
-            <tr class="hover:bg-slate-800/40 transition-colors">
-                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">PROTON_HIDE_NVIDIA_GPU</td>
-                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">switch</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Reports NVIDIA GPU as AMD for affected games (e.g. Reflex workaround)<br><br>Source: ProtonPlus. Aligns with PROTON_HIDE_APU for AMD</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap"></td>
-                <td class="p-3 text-emerald-400 text-[0.7rem] break-all"></td>
-            </tr>
-            <tr class="hover:bg-slate-800/40 transition-colors">
-                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">PROTON_HIDE_APU</td>
-                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">switch</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Hides AMD APU from the game — use when the APU interferes with dGPU selection<br><br>Source: ProtonPlus</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap"></td>
-                <td class="p-3 text-emerald-400 text-[0.7rem] break-all"></td>
-            </tr>
-            <tr class="hover:bg-slate-800/40 transition-colors">
-                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">PROTON_ENABLE_D9VK</td>
-                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">switch</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Enables D9VK (Vulkan-based Direct3D 9) renderer instead of DXVK<br><br>Experimental; try if D3D9 games have issues under DXVK</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap"></td>
-                <td class="p-3 text-emerald-400 text-[0.7rem] break-all"></td>
-            </tr>
-            <tr class="hover:bg-slate-800/40 transition-colors">
-                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">PROTON_USE_WINED3D</td>
-                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">switch</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Forces OpenGL (WineD3D) fallback instead of DXVK for Direct3D 9-11<br><br>Source: ProtonPlus; use when DXVK causes crashes</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap"></td>
-                <td class="p-3 text-emerald-400 text-[0.7rem] break-all"></td>
-            </tr>
-            <tr class="hover:bg-slate-800/40 transition-colors">
-                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">PROTON_USE_D7VK</td>
-                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">switch</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Enables D7VK for older Direct3D 7 and 8 era games<br><br>Source: ProtonPlus; requires a compatible Proton version</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap"></td>
-                <td class="p-3 text-emerald-400 text-[0.7rem] break-all"></td>
-            </tr>
-            <tr class="hover:bg-slate-800/40 transition-colors">
-                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">PROTON_USE_NTSYNC</td>
-                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">switch</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Set to 0 to use FSync instead of NTSync for sync-sensitive games<br><br>Source: ProtonPlus; NTSync is default in modern Proton</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap">1</td>
-                <td class="p-3 text-emerald-400 text-[0.7rem] break-all">^[01]$</td>
-            </tr>
-            <tr class="hover:bg-slate-800/40 transition-colors">
-                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">PROTON_FORCE_LARGE_ADDRESS_AWARE</td>
-                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">switch</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Forces 4GB address space support for 32-bit process (LAA flag)<br><br>Source: ProtonPlus; helps prevent OOM crashes in memory-intensive content</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap"></td>
-                <td class="p-3 text-emerald-400 text-[0.7rem] break-all"></td>
-            </tr>
-            <tr class="hover:bg-slate-800/40 transition-colors">
-                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">PROTON_USE_WOW64</td>
-                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">switch</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Enables WoW64 support for 32-bit games on 64-bit Proton builds<br><br>Source: ProtonPlus</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap"></td>
-                <td class="p-3 text-emerald-400 text-[0.7rem] break-all"></td>
-            </tr>
-            <tr class="hover:bg-slate-800/40 transition-colors">
-                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">PROTON_ENABLE_WAYLAND</td>
-                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">switch</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Runs the game on native Wayland instead of XWayland<br><br>Source: ProtonPlus</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap"></td>
-                <td class="p-3 text-emerald-400 text-[0.7rem] break-all"></td>
-            </tr>
-            <tr class="hover:bg-slate-800/40 transition-colors">
-                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">PROTON_PREFER_SDL</td>
-                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">switch</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Workaround for controller detection issues — prefers SDL input over DirectInput<br><br>Source: ProtonPlus</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap"></td>
-                <td class="p-3 text-emerald-400 text-[0.7rem] break-all"></td>
-            </tr>
-            <tr class="hover:bg-slate-800/40 transition-colors">
-                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">PROTON_NO_STEAMINPUT</td>
-                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">switch</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Disables Steam Input support entirely<br><br>Source: ProtonPlus</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap"></td>
-                <td class="p-3 text-emerald-400 text-[0.7rem] break-all"></td>
-            </tr>
-            <tr class="hover:bg-slate-800/40 transition-colors">
-                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">PROTON_DISCORD_BRIDGE</td>
-                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">switch</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Enables Proton's Discord presence bridge for rich presence in native Linux Discord<br><br>Source: ProtonPlus; requires Proton 11-1 or newer</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap"></td>
-                <td class="p-3 text-emerald-400 text-[0.7rem] break-all"></td>
-            </tr>
-            <tr class="hover:bg-slate-800/40 transition-colors">
-                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">PROTON_USE_OPTISCALER</td>
-                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">switch</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Enables Proton OptiScaler integration for DLSS/FSR/XeSS upscaling substitution<br><br>Source: ProtonPlus; requires Proton 11-1 or newer</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap"></td>
-                <td class="p-3 text-emerald-400 text-[0.7rem] break-all"></td>
-            </tr>
-            <tr class="hover:bg-slate-800/40 transition-colors">
-                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">PROTON_FSR4_UPGRADE</td>
-                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">switch</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Upgrades supported FSR 3.1 games to FSR 4 via the selected custom Proton build<br><br>Source: ProtonPlus; requires Proton-GE/Proton-CachyOS/Proton-EM and compatible AMD GPU</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap"></td>
-                <td class="p-3 text-emerald-400 text-[0.7rem] break-all"></td>
-            </tr>
-            <tr class="hover:bg-slate-800/40 transition-colors">
-                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">PROTON_FSR4_RDNA3_UPGRADE</td>
-                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">switch</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Legacy RDNA3-specific FSR 4 upgrade switch retained by older Proton-GE builds<br><br>Source: ProtonPlus; prefer PROTON_FSR4_UPGRADE on newer builds</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap"></td>
-                <td class="p-3 text-emerald-400 text-[0.7rem] break-all"></td>
-            </tr>
-            <tr class="hover:bg-slate-800/40 transition-colors">
-                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">PROTON_MLFG_UPGRADE</td>
-                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">switch</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Requests ML frame generation (FSR 4 MLFG) in supported custom Proton builds<br><br>Source: ProtonPlus; requires FSR 4.0.3+ and compatible AMD hardware</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap"></td>
-                <td class="p-3 text-emerald-400 text-[0.7rem] break-all"></td>
-            </tr>
-            <tr class="hover:bg-slate-800/40 transition-colors">
-                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">PROTON_FORCE_NVAPI</td>
-                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">switch</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Forces Proton's NVAPI path — AMD Reflex last-resort fallback that can break FSR 4<br><br>Source: ProtonPlus; use only after safer Reflex presets fail</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap"></td>
-                <td class="p-3 text-emerald-400 text-[0.7rem] break-all"></td>
-            </tr>
-            <tr class="hover:bg-slate-800/40 transition-colors">
-                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">PROTON_XESS_UPGRADE</td>
-                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">switch</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Updates XeSS components in supported Intel-XeSS games<br><br>Source: ProtonPlus</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap"></td>
-                <td class="p-3 text-emerald-400 text-[0.7rem] break-all"></td>
-            </tr>
-            <tr class="hover:bg-slate-800/40 transition-colors">
-                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">PROTON_DXVK_LOWLATENCY</td>
-                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">switch</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Enables Proton-CachyOS DXVK low-latency path for Direct3D 9-11<br><br>Source: ProtonPlus; requires Proton-CachyOS build</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap"></td>
-                <td class="p-3 text-emerald-400 text-[0.7rem] break-all"></td>
-            </tr>
-            <tr class="hover:bg-slate-800/40 transition-colors">
-                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">PROTON_VKD3D_LOWLATENCY</td>
-                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">switch</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Enables VKD3D-Proton low latency for Direct3D 12 games with Reflex markers<br><br>Source: ProtonPlus; requires Proton-CachyOS; incompatible with frame gen</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap"></td>
-                <td class="p-3 text-emerald-400 text-[0.7rem] break-all"></td>
-            </tr>
-            <tr class="hover:bg-slate-800/40 transition-colors">
-                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">PROTON_USE_SECCOMP</td>
-                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">switch</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Enables seccomp-based syscall sandboxing for Proton processes<br><br>Disable (set 0) if game crashes immediately on launch</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap"></td>
-                <td class="p-3 text-emerald-400 text-[0.7rem] break-all"></td>
-            </tr>
-            <tr class="hover:bg-slate-800/40 transition-colors">
-                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">WINEDEBUG</td>
-                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">string</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Wine debug channel configuration — comma-separated channel:level pairs<br><br>e.g. WINEDEBUG=-all,+openxr — use vrclient for VRChat-specific Wine logs</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap">-all</td>
-                <td class="p-3 text-emerald-400 text-[0.7rem] break-all">^([+-]?[a-zA-Z_*]+(?:,[+-]?[a-zA-Z_*]+)*)$</td>
-            </tr>
-            <tr class="hover:bg-slate-800/40 transition-colors">
-                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">WINEDLLOVERRIDES</td>
-                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">string</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Wine DLL override map in format dllname=type (n=native b=builtin)<br><br>Separate multiple with semicolons. iyuv_32= fixes video codec issues in VRChat</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap">iyuv_32=</td>
-                <td class="p-3 text-emerald-400 text-[0.7rem] break-all">^([A-Za-z0-9_*.]+=[nNbB,]*)(;[A-Za-z0-9_*.]+=[nNbB,]*)*$</td>
-            </tr>
-            <tr class="hover:bg-slate-800/40 transition-colors">
-                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">WINEPREFIX</td>
-                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">string</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Overrides the Wine prefix directory path for this game session<br><br>Usually not needed — Steam sets this automatically for Proton games</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap">/run/media/system/Data/Games/Steam/steamapps/compatdata/438100/pfx</td>
-                <td class="p-3 text-emerald-400 text-[0.7rem] break-all">^/.+$</td>
-            </tr>
-            <tr class="hover:bg-slate-800/40 transition-colors">
-                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">WINE_SIMULATE_WRITECOPY</td>
-                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">switch</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Simulates page write-copy protection — fixes certain game initialization errors<br><br>Source: ProtonPlus</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap"></td>
-                <td class="p-3 text-emerald-400 text-[0.7rem] break-all"></td>
-            </tr>
-            <tr class="hover:bg-slate-800/40 transition-colors">
-                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">WINE_VK_USE_SYNC2</td>
-                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">switch</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Enables Vulkan synchronization 2 extension in Wine/Proton Vulkan layer<br><br>Source: ProtonPlus</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap"></td>
-                <td class="p-3 text-emerald-400 text-[0.7rem] break-all"></td>
-            </tr>
-            <tr class="hover:bg-slate-800/40 transition-colors">
-                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">WINE_SYNC_USE_FUTEX_WAITV</td>
-                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">switch</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Enables futex_waitv kernel syscall for synchronization — reduces CPU overhead<br><br>Source: ProtonPlus</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap"></td>
-                <td class="p-3 text-emerald-400 text-[0.7rem] break-all"></td>
-            </tr>
-            <tr class="hover:bg-slate-800/40 transition-colors">
-                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">PULSE_LATENCY_MSEC</td>
-                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">int</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Sets PulseAudio latency target in milliseconds<br><br>Source: ProtonPlus; lower = less latency but more risk of audio glitches</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap">60</td>
-                <td class="p-3 text-emerald-400 text-[0.7rem] break-all">^\d{1,3}$</td>
-            </tr>
-            <tr class="hover:bg-slate-800/40 transition-colors">
-                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">WINEALSA_CHANNELS</td>
-                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">int</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Sets Wine ALSA output channel count<br><br>Source: ProtonPlus; requires Proton 11-1 or newer</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap">2</td>
-                <td class="p-3 text-emerald-400 text-[0.7rem] break-all">^[1-8]$</td>
-            </tr>
-            <tr class="hover:bg-slate-800/40 transition-colors">
-                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">WINEALSA_SPACIAL</td>
-                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">switch</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Enables Wine ALSA spatial downmix for 4/6/8 channel configurations<br><br>Source: ProtonPlus; requires 4+ output channels via WINEALSA_CHANNELS</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap"></td>
-                <td class="p-3 text-emerald-400 text-[0.7rem] break-all"></td>
-            </tr>
-            <tr class="hover:bg-slate-800/40 transition-colors">
-                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">PRESSURE_VESSEL_IMPORT_OPENXR_1_RUNTIMES</td>
-                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">switch</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Exposes host machine OpenXR runtime JSON files inside the Steam container<br><br>Source: community; needed for WiVRn/Monado/other host OpenXR runtimes</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap"></td>
-                <td class="p-3 text-emerald-400 text-[0.7rem] break-all"></td>
-            </tr>
-            <tr class="hover:bg-slate-800/40 transition-colors">
-                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">PRESSURE_VESSEL_FILESYSTEMS_RW</td>
-                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">string</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Grants read-write access to specific host paths inside the pressure-vessel container<br><br>Colon-separated absolute paths. e.g. /var/lib/flatpak/app/io.github.wivrn.wivrn</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap"></td>
-                <td class="p-3 text-emerald-400 text-[0.7rem] break-all">^(/.+)(:.+)*$</td>
-            </tr>
-            <tr class="hover:bg-slate-800/40 transition-colors">
-                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">DRI_PRIME</td>
-                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">switch</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Forces the game to run on the AMD discrete GPU on hybrid graphics systems<br><br>Source: ProtonPlus; set to 1 to use dGPU</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap"></td>
-                <td class="p-3 text-emerald-400 text-[0.7rem] break-all"></td>
-            </tr>
-            <tr class="hover:bg-slate-800/40 transition-colors">
-                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">AMD_ICD</td>
-                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">string</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Chooses the AMD Vulkan ICD — RADV (Mesa) or AMDVLK (AMD official)<br><br>Source: ProtonPlus; RADV is generally preferred for gaming</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap">RADV</td>
-                <td class="p-3 text-emerald-400 text-[0.7rem] break-all">^(RADV|AMDVLK)$</td>
-            </tr>
-            <tr class="hover:bg-slate-800/40 transition-colors">
-                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">STAGING_SHARED_MEMORY</td>
-                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">switch</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Enables AMD driver shared memory staging support — improves VRAM bandwidth<br><br>Source: ProtonPlus; AMD only</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap"></td>
-                <td class="p-3 text-emerald-400 text-[0.7rem] break-all"></td>
-            </tr>
-            <tr class="hover:bg-slate-800/40 transition-colors">
-                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">mesa_glthread</td>
-                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">string</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Controls Mesa GL threading — improves multi-threaded OpenGL performance<br><br>Source: ProtonPlus; lowercase var name</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap">true</td>
-                <td class="p-3 text-emerald-400 text-[0.7rem] break-all">^(true|false)$</td>
-            </tr>
-            <tr class="hover:bg-slate-800/40 transition-colors">
-                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">MESA_SHADER_CACHE_DISABLE</td>
-                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">switch</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Controls Mesa's on-disk shader cache — set 0 to enable / 1 to disable<br><br>Source: ProtonPlus; 0=cache enabled (default), 1=disabled</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap">0</td>
-                <td class="p-3 text-emerald-400 text-[0.7rem] break-all">^[01]$</td>
-            </tr>
-            <tr class="hover:bg-slate-800/40 transition-colors">
-                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">ENABLE_LAYER_MESA_ANTI_LAG</td>
-                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">switch</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Enables Mesa Anti-Lag to reduce input latency on supported AMD setups<br><br>Source: ProtonPlus; AMD Mesa only</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap"></td>
-                <td class="p-3 text-emerald-400 text-[0.7rem] break-all"></td>
-            </tr>
-            <tr class="hover:bg-slate-800/40 transition-colors">
-                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">RADV_PERFTEST</td>
-                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">string</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Enables experimental RADV features: comma-separated flags (rt,sam,nggc,gpl,ruse,emulate_rt)<br><br>Source: ProtonPlus. rt=ray tracing,sam=Resizable BAR,nggc=NGG culling,gpl=GPL shaders,ruse=userspace queue,emulate_rt=SW ray tracing</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap"></td>
-                <td class="p-3 text-emerald-400 text-[0.7rem] break-all">^(rt|sam|nggc|gpl|ruse|emulate_rt)(,(rt|sam|nggc|gpl|ruse|emulate_rt))*$</td>
-            </tr>
-            <tr class="hover:bg-slate-800/40 transition-colors">
-                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">RADV_DEBUG</td>
-                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">string</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Enables RADV debug/workaround flags: comma-separated (nocng,noabin,nobg,nodcc,novrs,nogpl,noexecbuf2,precompile,noatc)<br><br>Source: ProtonPlus. nocng=no NGG,nodcc=no DCC,novrs=no VRS,precompile=precompile shaders,noatc=fixes APU texture issues</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap"></td>
-                <td class="p-3 text-emerald-400 text-[0.7rem] break-all">^([a-z0-9]+)(,[a-z0-9]+)*$</td>
-            </tr>
-            <tr class="hover:bg-slate-800/40 transition-colors">
-                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">ACO_DEBUG</td>
-                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">string</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Enables AMD ACO shader compiler debug flags: comma-separated (validate,nofpgather,perfinfo,force-isel,nosched,nowave32)<br><br>Source: ProtonPlus; AMD ACO compiler only</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap"></td>
-                <td class="p-3 text-emerald-400 text-[0.7rem] break-all">^([a-z0-9\-]+)(,[a-z0-9\-]+)*$</td>
-            </tr>
-            <tr class="hover:bg-slate-800/40 transition-colors">
-                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">DXIL_SPIRV_CONFIG</td>
-                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">string</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Configures DXIL-SPIR-V translation behavior — e.g. RDNA3 MLFG workaround<br><br>Source: ProtonPlus; e.g. wmma_rdna3_workaround for RDNA3 MLFG</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap"></td>
-                <td class="p-3 text-emerald-400 text-[0.7rem] break-all">^[a-z0-9_]+(=[a-z0-9_]+)?(,[a-z0-9_]+(=[a-z0-9_]+)?)*$</td>
-            </tr>
-            <tr class="hover:bg-slate-800/40 transition-colors">
-                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">LOW_LATENCY_LAYER</td>
-                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">switch</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Enables Proton-CachyOS low-latency Vulkan layer with VK_AMD_anti_lag exposure<br><br>Source: ProtonPlus; requires compatible game and CachyOS build</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap"></td>
-                <td class="p-3 text-emerald-400 text-[0.7rem] break-all"></td>
-            </tr>
-            <tr class="hover:bg-slate-800/40 transition-colors">
-                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">LOW_LATENCY_LAYER_REFLEX</td>
-                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">switch</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Switches CachyOS low-latency layer from Anti-Lag to VK_NV_low_latency2 (NVIDIA Reflex)<br><br>Source: ProtonPlus; requires LOW_LATENCY_LAYER and game Reflex support</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap"></td>
-                <td class="p-3 text-emerald-400 text-[0.7rem] break-all"></td>
-            </tr>
-            <tr class="hover:bg-slate-800/40 transition-colors">
-                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">LOW_LATENCY_LAYER_SPOOF_NVIDIA</td>
-                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">switch</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Makes the low-latency Vulkan layer report an NVIDIA GPU — last-resort Reflex workaround<br><br>Source: ProtonPlus; can break FSR 4 — use only when all else fails</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap"></td>
-                <td class="p-3 text-emerald-400 text-[0.7rem] break-all"></td>
-            </tr>
-            <tr class="hover:bg-slate-800/40 transition-colors">
-                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">DXVK_NVAPI_ALLOW_OTHER_DRIVERS</td>
-                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">switch</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Allows DXVK-NVAPI on non-NVIDIA drivers — least-invasive AMD Reflex compatibility preset<br><br>Source: ProtonPlus</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap"></td>
-                <td class="p-3 text-emerald-400 text-[0.7rem] break-all"></td>
-            </tr>
-            <tr class="hover:bg-slate-800/40 transition-colors">
-                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">DXVK_NVAPI_VKREFLEX</td>
-                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">switch</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Enables CachyOS NVIDIA Reflex Vulkan layer for native Vulkan games<br><br>Source: ProtonPlus; requires NVIDIA and compatible CachyOS build</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap"></td>
-                <td class="p-3 text-emerald-400 text-[0.7rem] break-all"></td>
-            </tr>
-            <tr class="hover:bg-slate-800/40 transition-colors">
-                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">DXVK_CONFIG</td>
-                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">string</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Configures DXVK behavior — e.g. dxgi.hideAmdGpu=True to hide AMD GPU<br><br>Source: ProtonPlus; e.g. dxgi.hideAmdGpu=True for Reflex GPU spoof</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap"></td>
-                <td class="p-3 text-emerald-400 text-[0.7rem] break-all">^[a-zA-Z.]+=[A-Za-z0-9_]+$</td>
-            </tr>
-            <tr class="hover:bg-slate-800/40 transition-colors">
-                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">DXVK_NVAPI</td>
-                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">switch</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Enables DXVK-NVAPI. Use PROTON_ENABLE_NVAPI instead when using Proton<br><br>Standalone DXVK installations</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap"></td>
-                <td class="p-3 text-emerald-400 text-[0.7rem] break-all"></td>
-            </tr>
-            <tr class="hover:bg-slate-800/40 transition-colors">
-                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">DXVK_HUD</td>
-                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">string</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Shows DXVK Vulkan overlay with GPU/frame timing stats<br><br>Combine with commas: DXVK_HUD=fps,gpus,memory — useful for performance profiling</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap">0</td>
-                <td class="p-3 text-emerald-400 text-[0.7rem] break-all">^(0|1|(fps|gpus|compiler|memory|frametimes|full)(,(fps|gpus|compiler|memory|frametimes|full))*)$</td>
-            </tr>
-            <tr class="hover:bg-slate-800/40 transition-colors">
-                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">DXVK_ASYNC</td>
-                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">switch</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Enables asynchronous shader compilation in DXVK to reduce stutter<br><br>Source: ProtonPlus; may cause visual artifacts during shader warmup — requires patched DXVK</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap"></td>
-                <td class="p-3 text-emerald-400 text-[0.7rem] break-all"></td>
-            </tr>
-            <tr class="hover:bg-slate-800/40 transition-colors">
-                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">DXVK_FRAME_RATE</td>
-                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">int</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Caps DXVK frame rate to specified value (frames per second — 0=uncapped)<br><br>Source: ProtonPlus; overrides in-game frame limiter via Vulkan layer</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap">0</td>
-                <td class="p-3 text-emerald-400 text-[0.7rem] break-all">^\d+$</td>
-            </tr>
-            <tr class="hover:bg-slate-800/40 transition-colors">
-                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">DXVK_LOG_LEVEL</td>
-                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">string</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Controls DXVK logging verbosity<br><br>Source: ProtonPlus. none=silent,error=critical only,debug=verbose</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap">none</td>
-                <td class="p-3 text-emerald-400 text-[0.7rem] break-all">^(none|error|warn|info|debug)$</td>
-            </tr>
-            <tr class="hover:bg-slate-800/40 transition-colors">
-                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">DXVK_STATE_CACHE</td>
-                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">switch</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Enables DXVK pipeline state cache for faster shader reuse between sessions<br><br>Disable if you have persistent shader bugs after game updates</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap"></td>
-                <td class="p-3 text-emerald-400 text-[0.7rem] break-all"></td>
-            </tr>
-            <tr class="hover:bg-slate-800/40 transition-colors">
-                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">VKD3D_CONFIG</td>
-                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">string</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Configures VKD3D-Proton behavior — comma-separated flags (shader_cache,force_host_cache,upload_hvv,no_upload_hvv,nodxr,dxr11,dxr10,gpuva,stable_power_state,...)<br><br>Source: ProtonPlus. nodxr=disable RT,dxr11=enable RT,shader_cache=disk cache,upload_hvv=ReBAR staging,gpuva=GPU VA</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap"></td>
-                <td class="p-3 text-emerald-400 text-[0.7rem] break-all">^[a-z_]+(,[a-z_]+)*$</td>
-            </tr>
-            <tr class="hover:bg-slate-800/40 transition-colors">
-                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">VKD3D_LOG_LEVEL</td>
-                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">string</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Controls VKD3D logging verbosity<br><br>Source: ProtonPlus. none=muted,err=critical,warn=warnings,fixme=missing features,info=general,trace=verbose</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap"></td>
-                <td class="p-3 text-emerald-400 text-[0.7rem] break-all">^(none|err|warn|fixme|info|trace)$</td>
-            </tr>
-            <tr class="hover:bg-slate-800/40 transition-colors">
-                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">VKD3D_SHADER_CACHE</td>
-                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">switch</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Enables VKD3D-Proton internal on-disk shader cache to reduce stuttering<br><br>Source: ProtonPlus</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap"></td>
-                <td class="p-3 text-emerald-400 text-[0.7rem] break-all"></td>
-            </tr>
-            <tr class="hover:bg-slate-800/40 transition-colors">
-                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">VKD3D_GPUVA</td>
-                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">switch</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Enables GPU Virtual Addressing in VKD3D-Proton — helps open-world games with D3D12 memory<br><br>Source: ProtonPlus</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap"></td>
-                <td class="p-3 text-emerald-400 text-[0.7rem] break-all"></td>
-            </tr>
-            <tr class="hover:bg-slate-800/40 transition-colors">
-                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">SCB_AUTO_VRR</td>
-                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">switch</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">ScopeBuddy: Enables automatic Variable Refresh Rate matching to game FPS<br><br>Source: ProtonPlus; requires ScopeBuddy wrapper</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap"></td>
-                <td class="p-3 text-emerald-400 text-[0.7rem] break-all"></td>
-            </tr>
-            <tr class="hover:bg-slate-800/40 transition-colors">
-                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">MANGOHUD</td>
-                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">switch</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Enables MangoHUD performance overlay (Vulkan env mode — see also gamemoderun wrapper)<br><br>Source: ProtonPlus; install mangohud separately; use MANGOHUD=1</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap"></td>
-                <td class="p-3 text-emerald-400 text-[0.7rem] break-all"></td>
-            </tr>
-            <tr class="hover:bg-slate-800/40 transition-colors">
-                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">MANGOHUD_CONFIG</td>
-                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">string</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Configures MangoHUD overlay display options (comma-separated)<br><br>e.g. fps,gpu_stats,cpu_stats,ram</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap"></td>
-                <td class="p-3 text-emerald-400 text-[0.7rem] break-all">^[a-z_]+(=[^,]*)?(,[a-z_]+(=[^,]*)?)*$</td>
-            </tr>
-            <tr class="hover:bg-slate-800/40 transition-colors">
-                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">ENABLE_VKBASALT</td>
-                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">switch</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Enables vkBasalt post-processing layer (sharpening/color grading) on top of VRChat<br><br>Install vkbasalt; configure via /etc/vkBasalt.conf or VKBASALT_CONFIG_FILE</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap"></td>
-                <td class="p-3 text-emerald-400 text-[0.7rem] break-all"></td>
-            </tr>
-            <tr class="hover:bg-slate-800/40 transition-colors">
-                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">VK_ICD_FILENAMES</td>
-                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">string</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Specifies path to specific Vulkan ICD driver JSON file (overrides default GPU)<br><br>e.g. /usr/share/vulkan/icd.d/nvidia_icd.json — use to force specific GPU</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap"></td>
-                <td class="p-3 text-emerald-400 text-[0.7rem] break-all">^/.+\.json(:.+\.json)*$</td>
-            </tr>
-            <tr class="hover:bg-slate-800/40 transition-colors">
-                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">VK_DRIVER_FILES</td>
-                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">string</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Alternative to VK_ICD_FILENAMES — specifies Vulkan driver JSON files<br><br>e.g. /usr/share/vulkan/icd.d/radeon_icd.x86_64.json</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap"></td>
-                <td class="p-3 text-emerald-400 text-[0.7rem] break-all">^/.+\.json(:.+\.json)*$</td>
-            </tr>
-            <tr class="hover:bg-slate-800/40 transition-colors">
-                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">MESA_VK_WSI_PRESENT_MODE</td>
-                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">string</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Overrides Vulkan window surface present mode (vsync behavior)<br><br>mailbox=low-latency,immediate=no-vsync,fifo=vsync</td>
-                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap"></td>
-                <td class="p-3 text-emerald-400 text-[0.7rem] break-all">^(mailbox|immediate|fifo|fifo_relaxed)$</td>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">PROTON_LOG</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">switch</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Enables Proton/Wine full debug log output written to ~/steam-438100.log<br><br>Useful for diagnosing Proton/VRChat launch failures. Creates large log files. Source: ProtonPlus</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all"></td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">PROTON_LOG_DIR</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">string</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Overrides the directory where Proton log files are written<br><br>e.g. PROTON_LOG_DIR=/tmp — prevents log clutter in home directory</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap">%HOME%</td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all">^/.+$</td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">PROTON_ENABLE_NVAPI</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">switch</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Enables NVIDIA NVAPI DLL emulation for DLSS and NVIDIA-specific features (e.g. Reflex).<br><br>Source: ProtonPlus</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all"></td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">PROTON_ENABLE_NGX_UPDATER</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">switch</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Updates DLSS components for supported games via NVIDIA NGX<br><br>Source: ProtonPlus</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all"></td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">PROTON_DLSS_INDICATOR</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">switch</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Shows an in-game DLSS status indicator<br><br>Source: ProtonPlus</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all"></td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">PROTON_NVIDIA_LIBS</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">switch</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Enables NVIDIA-specific proprietary libraries inside Proton<br><br>Source: ProtonPlus</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all"></td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">PROTON_HIDE_NVIDIA_GPU</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">switch</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Reports NVIDIA GPU as AMD for affected games (e.g. Reflex workaround)<br><br>Source: ProtonPlus. Aligns with PROTON_HIDE_APU for AMD</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all"></td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">PROTON_HIDE_APU</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">switch</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Hides AMD APU from the game — use when the APU interferes with dGPU selection<br><br>Source: ProtonPlus</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all"></td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">PROTON_ENABLE_D9VK</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">switch</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Enables D9VK (Vulkan-based Direct3D 9) renderer instead of DXVK<br><br>Experimental; try if D3D9 games have issues under DXVK</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all"></td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">PROTON_USE_WINED3D</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">switch</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Forces OpenGL (WineD3D) fallback instead of DXVK for Direct3D 9-11<br><br>Source: ProtonPlus; use when DXVK causes crashes</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all"></td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">PROTON_USE_D7VK</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">switch</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Enables D7VK for older Direct3D 7 and 8 era games<br><br>Source: ProtonPlus; requires a compatible Proton version</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all"></td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">PROTON_USE_NTSYNC</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">switch</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Set to 0 to use FSync instead of NTSync for sync-sensitive games<br><br>Source: ProtonPlus; NTSync is default in modern Proton</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap">1</td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all">^[01]$</td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">PROTON_FORCE_LARGE_ADDRESS_AWARE</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">switch</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Forces 4GB address space support for 32-bit process (LAA flag)<br><br>Source: ProtonPlus; helps prevent OOM crashes in memory-intensive content</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all"></td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">PROTON_USE_WOW64</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">switch</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Enables WoW64 support for 32-bit games on 64-bit Proton builds<br><br>Source: ProtonPlus</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all"></td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">PROTON_ENABLE_WAYLAND</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">switch</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Runs the game on native Wayland instead of XWayland<br><br>Source: ProtonPlus</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all"></td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">PROTON_PREFER_SDL</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">switch</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Workaround for controller detection issues — prefers SDL input over DirectInput<br><br>Source: ProtonPlus</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all"></td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">PROTON_NO_STEAMINPUT</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">switch</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Disables Steam Input support entirely<br><br>Source: ProtonPlus</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all"></td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">PROTON_DISCORD_BRIDGE</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">switch</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Enables Proton's Discord presence bridge for rich presence in native Linux Discord<br><br>Source: ProtonPlus; requires Proton 11-1 or newer</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all"></td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">PROTON_USE_OPTISCALER</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">switch</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Enables Proton OptiScaler integration for DLSS/FSR/XeSS upscaling substitution<br><br>Source: ProtonPlus; requires Proton 11-1 or newer</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all"></td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">PROTON_FSR4_UPGRADE</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">switch</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Upgrades supported FSR 3.1 games to FSR 4 via the selected custom Proton build<br><br>Source: ProtonPlus; requires Proton-GE/Proton-CachyOS/Proton-EM and compatible AMD GPU</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all"></td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">PROTON_FSR4_RDNA3_UPGRADE</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">switch</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Legacy RDNA3-specific FSR 4 upgrade switch retained by older Proton-GE builds<br><br>Source: ProtonPlus; prefer PROTON_FSR4_UPGRADE on newer builds</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all"></td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">PROTON_MLFG_UPGRADE</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">switch</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Requests ML frame generation (FSR 4 MLFG) in supported custom Proton builds<br><br>Source: ProtonPlus; requires FSR 4.0.3+ and compatible AMD hardware</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all"></td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">PROTON_FORCE_NVAPI</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">switch</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Forces Proton's NVAPI path — AMD Reflex last-resort fallback that can break FSR 4<br><br>Source: ProtonPlus; use only after safer Reflex presets fail</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all"></td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">PROTON_XESS_UPGRADE</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">switch</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Updates XeSS components in supported Intel-XeSS games<br><br>Source: ProtonPlus</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all"></td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">PROTON_DXVK_LOWLATENCY</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">switch</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Enables Proton-CachyOS DXVK low-latency path for Direct3D 9-11<br><br>Source: ProtonPlus; requires Proton-CachyOS build</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all"></td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">PROTON_VKD3D_LOWLATENCY</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">switch</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Enables VKD3D-Proton low latency for Direct3D 12 games with Reflex markers<br><br>Source: ProtonPlus; requires Proton-CachyOS; incompatible with frame gen</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all"></td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">PROTON_USE_SECCOMP</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">switch</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Enables seccomp-based syscall sandboxing for Proton processes<br><br>Disable (set 0) if game crashes immediately on launch</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all"></td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">WINEDEBUG</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">string</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Wine debug channel configuration — comma-separated channel:level pairs<br><br>e.g. WINEDEBUG=-all,+openxr — use vrclient for VRChat-specific Wine logs</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap">-all</td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all">^([+-]?[a-zA-Z_*]+(?:,[+-]?[a-zA-Z_*]+)*)$</td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">WINEDLLOVERRIDES</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">string</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Wine DLL override map in format dllname=type (n=native b=builtin)<br><br>Separate multiple with semicolons. iyuv_32= fixes video codec issues in VRChat</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap">iyuv_32=</td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all">^([A-Za-z0-9_*.]+=[nNbB,]*)(;[A-Za-z0-9_*.]+=[nNbB,]*)*$</td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">WINEPREFIX</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">string</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Overrides the Wine prefix directory path for this game session<br><br>Usually not needed — Steam sets this automatically for Proton games</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap">/run/media/system/Data/Games/Steam/steamapps/compatdata/438100/pfx</td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all">^/.+$</td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">WINE_SIMULATE_WRITECOPY</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">switch</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Simulates page write-copy protection — fixes certain game initialization errors<br><br>Source: ProtonPlus</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all"></td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">WINE_VK_USE_SYNC2</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">switch</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Enables Vulkan synchronization 2 extension in Wine/Proton Vulkan layer<br><br>Source: ProtonPlus</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all"></td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">WINE_SYNC_USE_FUTEX_WAITV</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">switch</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Enables futex_waitv kernel syscall for synchronization — reduces CPU overhead<br><br>Source: ProtonPlus</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all"></td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">PULSE_LATENCY_MSEC</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">int</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Sets PulseAudio latency target in milliseconds<br><br>Source: ProtonPlus; lower = less latency but more risk of audio glitches</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap">60</td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all">^\d{1,3}$</td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">WINEALSA_CHANNELS</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">int</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Sets Wine ALSA output channel count<br><br>Source: ProtonPlus; requires Proton 11-1 or newer</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap">2</td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all">^[1-8]$</td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">WINEALSA_SPACIAL</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">switch</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Enables Wine ALSA spatial downmix for 4/6/8 channel configurations<br><br>Source: ProtonPlus; requires 4+ output channels via WINEALSA_CHANNELS</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all"></td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">PRESSURE_VESSEL_IMPORT_OPENXR_1_RUNTIMES</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">switch</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Exposes host machine OpenXR runtime JSON files inside the Steam container<br><br>Source: community; needed for WiVRn/Monado/other host OpenXR runtimes</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all"></td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">PRESSURE_VESSEL_FILESYSTEMS_RW</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">string</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Grants read-write access to specific host paths inside the pressure-vessel container<br><br>Colon-separated absolute paths. e.g. /var/lib/flatpak/app/io.github.wivrn.wivrn</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all">^(/.+)(:.+)*$</td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">DRI_PRIME</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">switch</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Forces the game to run on the AMD discrete GPU on hybrid graphics systems<br><br>Source: ProtonPlus; set to 1 to use dGPU</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all"></td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">AMD_ICD</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">string</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Chooses the AMD Vulkan ICD — RADV (Mesa) or AMDVLK (AMD official)<br><br>Source: ProtonPlus; RADV is generally preferred for gaming</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap">RADV</td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all">^(RADV|AMDVLK)$</td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">STAGING_SHARED_MEMORY</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">switch</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Enables AMD driver shared memory staging support — improves VRAM bandwidth<br><br>Source: ProtonPlus; AMD only</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all"></td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">mesa_glthread</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">string</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Controls Mesa GL threading — improves multi-threaded OpenGL performance<br><br>Source: ProtonPlus; lowercase var name</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap">true</td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all">^(true|false)$</td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">MESA_SHADER_CACHE_DISABLE</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">switch</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Controls Mesa's on-disk shader cache — set 0 to enable / 1 to disable<br><br>Source: ProtonPlus; 0=cache enabled (default), 1=disabled</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap">0</td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all">^[01]$</td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">ENABLE_LAYER_MESA_ANTI_LAG</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">switch</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Enables Mesa Anti-Lag to reduce input latency on supported AMD setups<br><br>Source: ProtonPlus; AMD Mesa only</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all"></td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">RADV_PERFTEST</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">string</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Enables experimental RADV features: comma-separated flags (rt,sam,nggc,gpl,ruse,emulate_rt)<br><br>Source: ProtonPlus. rt=ray tracing,sam=Resizable BAR,nggc=NGG culling,gpl=GPL shaders,ruse=userspace queue,emulate_rt=SW ray tracing</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all">^(rt|sam|nggc|gpl|ruse|emulate_rt)(,(rt|sam|nggc|gpl|ruse|emulate_rt))*$</td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">RADV_DEBUG</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">string</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Enables RADV debug/workaround flags: comma-separated (nocng,noabin,nobg,nodcc,novrs,nogpl,noexecbuf2,precompile,noatc)<br><br>Source: ProtonPlus. nocng=no NGG,nodcc=no DCC,novrs=no VRS,precompile=precompile shaders,noatc=fixes APU texture issues</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all">^([a-z0-9]+)(,[a-z0-9]+)*$</td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">ACO_DEBUG</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">string</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Enables AMD ACO shader compiler debug flags: comma-separated (validate,nofpgather,perfinfo,force-isel,nosched,nowave32)<br><br>Source: ProtonPlus; AMD ACO compiler only</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all">^([a-z0-9\-]+)(,[a-z0-9\-]+)*$</td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">DXIL_SPIRV_CONFIG</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">string</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Configures DXIL-SPIR-V translation behavior — e.g. RDNA3 MLFG workaround<br><br>Source: ProtonPlus; e.g. wmma_rdna3_workaround for RDNA3 MLFG</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all">^[a-z0-9_]+(=[a-z0-9_]+)?(,[a-z0-9_]+(=[a-z0-9_]+)?)*$</td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">LOW_LATENCY_LAYER</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">switch</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Enables Proton-CachyOS low-latency Vulkan layer with VK_AMD_anti_lag exposure<br><br>Source: ProtonPlus; requires compatible game and CachyOS build</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all"></td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">LOW_LATENCY_LAYER_REFLEX</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">switch</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Switches CachyOS low-latency layer from Anti-Lag to VK_NV_low_latency2 (NVIDIA Reflex)<br><br>Source: ProtonPlus; requires LOW_LATENCY_LAYER and game Reflex support</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all"></td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">LOW_LATENCY_LAYER_SPOOF_NVIDIA</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">switch</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Makes the low-latency Vulkan layer report an NVIDIA GPU — last-resort Reflex workaround<br><br>Source: ProtonPlus; can break FSR 4 — use only when all else fails</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all"></td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">DXVK_NVAPI_ALLOW_OTHER_DRIVERS</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">switch</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Allows DXVK-NVAPI on non-NVIDIA drivers — least-invasive AMD Reflex compatibility preset<br><br>Source: ProtonPlus</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all"></td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">DXVK_NVAPI_VKREFLEX</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">switch</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Enables CachyOS NVIDIA Reflex Vulkan layer for native Vulkan games<br><br>Source: ProtonPlus; requires NVIDIA and compatible CachyOS build</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all"></td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">DXVK_CONFIG</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">string</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Configures DXVK behavior — e.g. dxgi.hideAmdGpu=True to hide AMD GPU<br><br>Source: ProtonPlus; e.g. dxgi.hideAmdGpu=True for Reflex GPU spoof</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all">^[a-zA-Z.]+=[A-Za-z0-9_]+$</td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">DXVK_NVAPI</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">switch</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Enables DXVK-NVAPI. Use PROTON_ENABLE_NVAPI instead when using Proton<br><br>Standalone DXVK installations</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all"></td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">DXVK_HUD</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">string</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Shows DXVK Vulkan overlay with GPU/frame timing stats<br><br>Combine with commas: DXVK_HUD=fps,gpus,memory — useful for performance profiling</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap">0</td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all">^(0|1|(fps|gpus|compiler|memory|frametimes|full)(,(fps|gpus|compiler|memory|frametimes|full))*)$</td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">DXVK_ASYNC</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">switch</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Enables asynchronous shader compilation in DXVK to reduce stutter<br><br>Source: ProtonPlus; may cause visual artifacts during shader warmup — requires patched DXVK</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all"></td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">DXVK_FRAME_RATE</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">int</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Caps DXVK frame rate to specified value (frames per second — 0=uncapped)<br><br>Source: ProtonPlus; overrides in-game frame limiter via Vulkan layer</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap">0</td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all">^\d+$</td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">DXVK_LOG_LEVEL</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">string</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Controls DXVK logging verbosity<br><br>Source: ProtonPlus. none=silent,error=critical only,debug=verbose</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap">none</td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all">^(none|error|warn|info|debug)$</td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">DXVK_STATE_CACHE</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">switch</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Enables DXVK pipeline state cache for faster shader reuse between sessions<br><br>Disable if you have persistent shader bugs after game updates</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all"></td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">VKD3D_CONFIG</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">string</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Configures VKD3D-Proton behavior — comma-separated flags (shader_cache,force_host_cache,upload_hvv,no_upload_hvv,nodxr,dxr11,dxr10,gpuva,stable_power_state,...)<br><br>Source: ProtonPlus. nodxr=disable RT,dxr11=enable RT,shader_cache=disk cache,upload_hvv=ReBAR staging,gpuva=GPU VA</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all">^[a-z_]+(,[a-z_]+)*$</td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">VKD3D_LOG_LEVEL</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">string</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Controls VKD3D logging verbosity<br><br>Source: ProtonPlus. none=muted,err=critical,warn=warnings,fixme=missing features,info=general,trace=verbose</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all">^(none|err|warn|fixme|info|trace)$</td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">VKD3D_SHADER_CACHE</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">switch</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Enables VKD3D-Proton internal on-disk shader cache to reduce stuttering<br><br>Source: ProtonPlus</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all"></td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">VKD3D_GPUVA</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">switch</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Enables GPU Virtual Addressing in VKD3D-Proton — helps open-world games with D3D12 memory<br><br>Source: ProtonPlus</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all"></td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">SCB_AUTO_VRR</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">switch</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">ScopeBuddy: Enables automatic Variable Refresh Rate matching to game FPS<br><br>Source: ProtonPlus; requires ScopeBuddy wrapper</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all"></td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">MANGOHUD</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">switch</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Enables MangoHUD performance overlay (Vulkan env mode — see also gamemoderun wrapper)<br><br>Source: ProtonPlus; install mangohud separately; use MANGOHUD=1</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all"></td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">MANGOHUD_CONFIG</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">string</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Configures MangoHUD overlay display options (comma-separated)<br><br>e.g. fps,gpu_stats,cpu_stats,ram</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all">^[a-z_]+(=[^,]*)?(,[a-z_]+(=[^,]*)?)*$</td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">ENABLE_VKBASALT</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">switch</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Enables vkBasalt post-processing layer (sharpening/color grading) on top of VRChat<br><br>Install vkbasalt; configure via /etc/vkBasalt.conf or VKBASALT_CONFIG_FILE</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all"></td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">VK_ICD_FILENAMES</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">string</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Specifies path to specific Vulkan ICD driver JSON file (overrides default GPU)<br><br>e.g. /usr/share/vulkan/icd.d/nvidia_icd.json — use to force specific GPU</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all">^/.+\.json(:.+\.json)*$</td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">VK_DRIVER_FILES</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">string</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Alternative to VK_ICD_FILENAMES — specifies Vulkan driver JSON files<br><br>e.g. /usr/share/vulkan/icd.d/radeon_icd.x86_64.json</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all">^/.+\.json(:.+\.json)*$</td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-blue-300 whitespace-nowrap">MESA_VK_WSI_PRESENT_MODE</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">string</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Overrides Vulkan window surface present mode (vsync behavior)<br><br>mailbox=low-latency,immediate=no-vsync,fifo=vsync</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all">^(mailbox|immediate|fifo|fifo_relaxed)$</td>
             </tr>
                     </tbody>
                 </table>

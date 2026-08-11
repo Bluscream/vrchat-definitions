@@ -1,58 +1,94 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VRChat Definitions</title>
+    <title>VRChat Definitions - VRChat.community</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap">
     <style>body { font-family: "Inter", sans-serif; }</style>
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen p-8 flex flex-col items-center justify-center">
-    <div class="max-w-3xl w-full bg-slate-900 border border-slate-800 rounded-2xl p-8 shadow-2xl space-y-6">
-        <div class="border-b border-slate-800 pb-4">
-            <h1 class="text-3xl font-extrabold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">VRChat Definitions Documentation</h1>
-            <p class="text-slate-400 text-sm mt-1">Centralized schema and parameter definitions for VRChat launch flags, environment variables, registry keys, and config.json.</p>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col">
+    
+    <header class="border-b border-slate-800 bg-slate-900/90 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-6">
+                <a href="#" class="flex items-center gap-2 text-white font-bold text-lg hover:opacity-90 transition-opacity">
+                    <span class="bg-gradient-to-r from-teal-400 via-cyan-400 to-blue-500 bg-clip-text text-transparent">VRChat.community</span>
+                    <span class="text-xs px-2 py-0.5 rounded-full bg-cyan-950 text-cyan-400 border border-cyan-800/60 font-mono font-medium">Definitions</span>
+                </a>
+                <nav class="hidden md:flex items-center gap-4 text-xs font-medium text-slate-400">
+                    <a href="cmdline/index.html" class="hover:text-cyan-400 transition-colors">CmdLine Flags</a>
+                    <a href="env/index.html" class="hover:text-cyan-400 transition-colors">Env Vars</a>
+                    <a href="registry/index.html" class="hover:text-cyan-400 transition-colors">Registry</a>
+                    <a href="config/index.html" class="hover:text-cyan-400 transition-colors">Config Schema</a>
+                </nav>
+            </div>
+            <div class="flex items-center gap-3">
+                <a href="https://github.com/Bluscream/vrchat-definitions" target="_blank" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs font-semibold text-slate-200 transition-all flex items-center gap-2">
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                    GitHub Repo
+                </a>
+            </div>
+        </div>
+    </header>
+    
+
+    <main class="flex-1 max-w-7xl w-full mx-auto px-6 py-12 flex flex-col items-center justify-center">
+        <div class="text-center max-w-3xl mb-12 space-y-4">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950/80 border border-cyan-800/80 text-cyan-400 text-xs font-semibold">
+                <span class="flex h-2 w-2 rounded-full bg-cyan-400 animate-pulse"></span>
+                Community-Driven VRChat Definitions
+            </div>
+            <h1 class="text-4xl sm:text-5xl font-extrabold text-white tracking-tight">
+                Complete VRChat Parameter & <span class="bg-gradient-to-r from-teal-400 via-cyan-400 to-blue-500 bg-clip-text text-transparent">Schema References</span>
+            </h1>
+            <p class="text-slate-400 text-base leading-relaxed">
+                Centralized, structured documentation for VRChat command-line launch arguments, Proton/Wine environment variables, Windows Registry key definitions, and client config schemas.
+            </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <a href="cmdline/index.html" class="group block p-5 bg-slate-800/60 hover:bg-slate-800 border border-slate-700/60 rounded-xl transition-all hover:border-cyan-500/50 hover:shadow-lg hover:shadow-cyan-500/10">
-                <div class="flex items-center justify-between">
-                    <h2 class="font-bold text-cyan-400 group-hover:text-cyan-300">Command Line Flags</h2>
-                    <span class="text-xs font-mono text-slate-400 bg-slate-900 px-2 py-0.5 rounded border border-slate-700">cmdline.csv</span>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-4xl">
+            <a href="cmdline/index.html" class="group relative p-6 bg-slate-900/80 hover:bg-slate-900 border border-slate-800 hover:border-cyan-500/50 rounded-2xl transition-all shadow-xl hover:shadow-2xl hover:shadow-cyan-500/10">
+                <div class="flex items-center justify-between mb-3">
+                    <span class="text-xs font-semibold uppercase tracking-wider text-cyan-400 bg-cyan-950/60 px-2.5 py-1 rounded-md border border-cyan-800/40">Command Line</span>
+                    <span class="font-mono text-xs text-slate-500">cmdline.csv</span>
                 </div>
-                <p class="text-xs text-slate-400 mt-2">Unity standalone player and VRChat debug startup flags (--fps, --osc, --affinity...)</p>
+                <h2 class="text-xl font-bold text-white group-hover:text-cyan-300 transition-colors">Command Line Arguments</h2>
+                <p class="text-slate-400 text-xs mt-2 leading-relaxed">Unity standalone player & VRChat startup parameters like <code class="text-cyan-300 font-mono">--fps</code>, <code class="text-cyan-300 font-mono">--osc</code>, and quality flags.</p>
             </a>
 
-            <a href="env/index.html" class="group block p-5 bg-slate-800/60 hover:bg-slate-800 border border-slate-700/60 rounded-xl transition-all hover:border-blue-500/50 hover:shadow-lg hover:shadow-blue-500/10">
-                <div class="flex items-center justify-between">
-                    <h2 class="font-bold text-blue-400 group-hover:text-blue-300">Environment Variables</h2>
-                    <span class="text-xs font-mono text-slate-400 bg-slate-900 px-2 py-0.5 rounded border border-slate-700">env.csv</span>
+            <a href="env/index.html" class="group relative p-6 bg-slate-900/80 hover:bg-slate-900 border border-slate-800 hover:border-blue-500/50 rounded-2xl transition-all shadow-xl hover:shadow-2xl hover:shadow-blue-500/10">
+                <div class="flex items-center justify-between mb-3">
+                    <span class="text-xs font-semibold uppercase tracking-wider text-blue-400 bg-blue-950/60 px-2.5 py-1 rounded-md border border-blue-800/40">Linux / Proton</span>
+                    <span class="font-mono text-xs text-slate-500">env.csv</span>
                 </div>
-                <p class="text-xs text-slate-400 mt-2">Proton, Wine, DXVK, VKD3D, Mesa, and Vulkan performance environment variables.</p>
+                <h2 class="text-xl font-bold text-white group-hover:text-blue-300 transition-colors">Environment Variables</h2>
+                <p class="text-slate-400 text-xs mt-2 leading-relaxed">Proton, Wine DLL overrides, DXVK, VKD3D, Mesa, and graphics environment parameters.</p>
             </a>
 
-            <a href="registry/index.html" class="group block p-5 bg-slate-800/60 hover:bg-slate-800 border border-slate-700/60 rounded-xl transition-all hover:border-purple-500/50 hover:shadow-lg hover:shadow-purple-500/10">
-                <div class="flex items-center justify-between">
-                    <h2 class="font-bold text-purple-400 group-hover:text-purple-300">Registry Settings</h2>
-                    <span class="text-xs font-mono text-slate-400 bg-slate-900 px-2 py-0.5 rounded border border-slate-700">registry.csv</span>
+            <a href="registry/index.html" class="group relative p-6 bg-slate-900/80 hover:bg-slate-900 border border-slate-800 hover:border-purple-500/50 rounded-2xl transition-all shadow-xl hover:shadow-2xl hover:shadow-purple-500/10">
+                <div class="flex items-center justify-between mb-3">
+                    <span class="text-xs font-semibold uppercase tracking-wider text-purple-400 bg-purple-950/60 px-2.5 py-1 rounded-md border border-purple-800/40">Windows Registry</span>
+                    <span class="font-mono text-xs text-slate-500">registry.csv</span>
                 </div>
-                <p class="text-xs text-slate-400 mt-2">Windows registry keys under HKCU\Software\VRChat\vrchat (Proton system.reg).</p>
+                <h2 class="text-xl font-bold text-white group-hover:text-purple-300 transition-colors">Registry Keys</h2>
+                <p class="text-slate-400 text-xs mt-2 leading-relaxed">VRChat player preference keys stored under <code class="text-purple-300 font-mono">HKCU\Software\VRChat\vrchat</code>.</p>
             </a>
 
-            <a href="config/index.html" class="group block p-5 bg-slate-800/60 hover:bg-slate-800 border border-slate-700/60 rounded-xl transition-all hover:border-emerald-500/50 hover:shadow-lg hover:shadow-emerald-500/10">
-                <div class="flex items-center justify-between">
-                    <h2 class="font-bold text-emerald-400 group-hover:text-emerald-300">Config Schema</h2>
-                    <span class="text-xs font-mono text-slate-400 bg-slate-900 px-2 py-0.5 rounded border border-slate-700">config.schema.json</span>
+            <a href="config/index.html" class="group relative p-6 bg-slate-900/80 hover:bg-slate-900 border border-slate-800 hover:border-emerald-500/50 rounded-2xl transition-all shadow-xl hover:shadow-2xl hover:shadow-emerald-500/10">
+                <div class="flex items-center justify-between mb-3">
+                    <span class="text-xs font-semibold uppercase tracking-wider text-emerald-400 bg-emerald-950/60 px-2.5 py-1 rounded-md border border-emerald-800/40">JSON Schema</span>
+                    <span class="font-mono text-xs text-slate-500">config.schema.json</span>
                 </div>
-                <p class="text-xs text-slate-400 mt-2">JSON Schema for VRChat client %APPDATA%\LocalLow\VRChat\VRChat\config.json</p>
+                <h2 class="text-xl font-bold text-white group-hover:text-emerald-300 transition-colors">Config JSON Schema</h2>
+                <p class="text-slate-400 text-xs mt-2 leading-relaxed">Official JSON Schema definition for VRChat client local <code class="text-emerald-300 font-mono">config.json</code> configuration files.</p>
             </a>
         </div>
+    </main>
 
-        <div class="pt-4 border-t border-slate-800 text-xs text-slate-500 flex justify-between items-center">
-            <span>Licensed under MIT License</span>
-            <a href="https://github.com/Bluscream/vrchat-definitions" target="_blank" class="hover:text-slate-300 underline">GitHub Repository</a>
-        </div>
-    </div>
+    <footer class="border-t border-slate-800 bg-slate-900/50 py-6 text-center text-xs text-slate-500">
+        <p>Maintained by <a href="https://github.com/Bluscream" class="text-slate-300 hover:underline">Bluscream</a> • Inspired by <a href="https://vrchat.community" class="text-cyan-400 hover:underline">VRChat.community</a> • Licensed under MIT</p>
+    </footer>
 </body>
 </html>
