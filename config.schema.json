@@ -47,42 +47,72 @@
       "description": "Screenshot resolution width in pixels",
       "default": 1920,
       "minimum": 640,
-      "examples": [1920, 2560, 3840, 7680]
+      "examples": [
+        1920,
+        2560,
+        3840,
+        7680
+      ]
     },
     "screenshot_res_height": {
       "type": "integer",
       "description": "Screenshot resolution height in pixels",
       "default": 1080,
       "minimum": 480,
-      "examples": [1080, 1440, 2160, 4320]
+      "examples": [
+        1080,
+        1440,
+        2160,
+        4320
+      ]
     },
     "camera_res_width": {
       "type": "integer",
       "description": "Camera resolution width in pixels",
       "default": 1920,
       "minimum": 640,
-      "examples": [1920, 2560, 3840, 7680]
+      "examples": [
+        1920,
+        2560,
+        3840,
+        7680
+      ]
     },
     "camera_res_height": {
       "type": "integer",
       "description": "Camera resolution height in pixels",
       "default": 1080,
       "minimum": 480,
-      "examples": [1080, 1440, 2160, 4320]
+      "examples": [
+        1080,
+        1440,
+        2160,
+        4320
+      ]
     },
     "camera_spout_res_width": {
       "type": "integer",
       "description": "Spout camera output resolution width in pixels",
       "default": 1920,
       "minimum": 640,
-      "examples": [1920, 2560, 3840, 7680]
+      "examples": [
+        1920,
+        2560,
+        3840,
+        7680
+      ]
     },
     "camera_spout_res_height": {
       "type": "integer",
       "description": "Spout camera output resolution height in pixels",
       "default": 1080,
       "minimum": 480,
-      "examples": [1080, 1440, 2160, 4320]
+      "examples": [
+        1080,
+        1440,
+        2160,
+        4320
+      ]
     },
     "fpv_steadycam_fov": {
       "type": "integer",
@@ -113,9 +143,15 @@
       "description": "Array of beta features to enable",
       "items": {
         "type": "string",
-        "enum": ["particle_system_limiter"]
+        "enum": [
+          "particle_system_limiter"
+        ]
       },
-      "examples": [["particle_system_limiter"]]
+      "examples": [
+        [
+          "particle_system_limiter"
+        ]
+      ]
     },
     "ps_max_particles": {
       "type": "integer",
@@ -175,6 +211,54 @@
       "type": "integer",
       "description": "Penalty value for particle trails (Particle System Limiter)",
       "default": 10,
+      "minimum": 0
+    },
+    "disableSteamRichPresence": {
+      "type": "boolean",
+      "description": "Disables Steam Rich Presence updates specifically",
+      "default": false
+    },
+    "disableDiscordRichPresence": {
+      "type": "boolean",
+      "description": "Alias for disableRichPresence \u2014 disables Discord Rich Presence specifically",
+      "default": false
+    },
+    "spout_output_width": {
+      "type": "integer",
+      "description": "Spout video stream output width in pixels (Spout camera integration)",
+      "default": 1920,
+      "minimum": 640
+    },
+    "spout_output_height": {
+      "type": "integer",
+      "description": "Spout video stream output height in pixels (Spout camera integration)",
+      "default": 1080,
+      "minimum": 480
+    },
+    "screenshot_format": {
+      "type": "string",
+      "description": "Image file format for screenshots and camera photos",
+      "enum": [
+        "png",
+        "jpg"
+      ],
+      "default": "png"
+    },
+    "picture_output_split_by_world": {
+      "type": "boolean",
+      "description": "Whether to organize screenshots into subfolders by world name/ID",
+      "default": false
+    },
+    "physbones_max_affected_transform_count": {
+      "type": "integer",
+      "description": "PhysBones limit for maximum affected transform count per avatar",
+      "default": 256,
+      "minimum": 0
+    },
+    "physbones_max_collider_check_count": {
+      "type": "integer",
+      "description": "PhysBones limit for maximum collider check count per avatar",
+      "default": 64,
       "minimum": 0
     }
   },
