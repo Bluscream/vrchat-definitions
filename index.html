@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VRChat Definitions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap">
+    <style>body { font-family: "Inter", sans-serif; }</style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen p-8 flex flex-col items-center justify-center">
+    <div class="max-w-3xl w-full bg-slate-900 border border-slate-800 rounded-2xl p-8 shadow-2xl space-y-6">
+        <div class="border-b border-slate-800 pb-4">
+            <h1 class="text-3xl font-extrabold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">VRChat Definitions Documentation</h1>
+            <p class="text-slate-400 text-sm mt-1">Centralized schema and parameter definitions for VRChat launch flags, environment variables, registry keys, and config.json.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <a href="cmdline/index.html" class="group block p-5 bg-slate-800/60 hover:bg-slate-800 border border-slate-700/60 rounded-xl transition-all hover:border-cyan-500/50 hover:shadow-lg hover:shadow-cyan-500/10">
+                <div class="flex items-center justify-between">
+                    <h2 class="font-bold text-cyan-400 group-hover:text-cyan-300">Command Line Flags</h2>
+                    <span class="text-xs font-mono text-slate-400 bg-slate-900 px-2 py-0.5 rounded border border-slate-700">cmdline.csv</span>
+                </div>
+                <p class="text-xs text-slate-400 mt-2">Unity standalone player and VRChat debug startup flags (--fps, --osc, --affinity...)</p>
+            </a>
+
+            <a href="env/index.html" class="group block p-5 bg-slate-800/60 hover:bg-slate-800 border border-slate-700/60 rounded-xl transition-all hover:border-blue-500/50 hover:shadow-lg hover:shadow-blue-500/10">
+                <div class="flex items-center justify-between">
+                    <h2 class="font-bold text-blue-400 group-hover:text-blue-300">Environment Variables</h2>
+                    <span class="text-xs font-mono text-slate-400 bg-slate-900 px-2 py-0.5 rounded border border-slate-700">env.csv</span>
+                </div>
+                <p class="text-xs text-slate-400 mt-2">Proton, Wine, DXVK, VKD3D, Mesa, and Vulkan performance environment variables.</p>
+            </a>
+
+            <a href="registry/index.html" class="group block p-5 bg-slate-800/60 hover:bg-slate-800 border border-slate-700/60 rounded-xl transition-all hover:border-purple-500/50 hover:shadow-lg hover:shadow-purple-500/10">
+                <div class="flex items-center justify-between">
+                    <h2 class="font-bold text-purple-400 group-hover:text-purple-300">Registry Settings</h2>
+                    <span class="text-xs font-mono text-slate-400 bg-slate-900 px-2 py-0.5 rounded border border-slate-700">registry.csv</span>
+                </div>
+                <p class="text-xs text-slate-400 mt-2">Windows registry keys under HKCU\Software\VRChat\vrchat (Proton system.reg).</p>
+            </a>
+
+            <a href="config/index.html" class="group block p-5 bg-slate-800/60 hover:bg-slate-800 border border-slate-700/60 rounded-xl transition-all hover:border-emerald-500/50 hover:shadow-lg hover:shadow-emerald-500/10">
+                <div class="flex items-center justify-between">
+                    <h2 class="font-bold text-emerald-400 group-hover:text-emerald-300">Config Schema</h2>
+                    <span class="text-xs font-mono text-slate-400 bg-slate-900 px-2 py-0.5 rounded border border-slate-700">config.schema.json</span>
+                </div>
+                <p class="text-xs text-slate-400 mt-2">JSON Schema for VRChat client %APPDATA%\LocalLow\VRChat\VRChat\config.json</p>
+            </a>
+        </div>
+
+        <div class="pt-4 border-t border-slate-800 text-xs text-slate-500 flex justify-between items-center">
+            <span>Licensed under MIT License</span>
+            <a href="https://github.com/Bluscream/vrchat-definitions" target="_blank" class="hover:text-slate-300 underline">GitHub Repository</a>
+        </div>
+    </div>
+</body>
+</html>

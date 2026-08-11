@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VRChat Command Line Flags - VRChat Definitions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap">
+    <style>body { font-family: "Inter", sans-serif; }</style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen p-6 flex flex-col">
+    <div class="max-w-7xl w-full mx-auto flex-1 flex flex-col gap-4">
+        <div class="flex flex-wrap items-center justify-between gap-4 bg-slate-900 border border-slate-800 p-4 rounded-xl shadow-lg">
+            <div class="flex items-center gap-3">
+                <a href="../index.html" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs font-semibold border border-slate-700 transition-colors">← Back to Index</a>
+                <h1 class="text-xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">VRChat Command Line Flags</h1>
+            </div>
+            <div class="flex items-center gap-3">
+                <input type="text" id="searchInput" onkeyup="filterTable()" placeholder="Search flags, descriptions..." class="px-3 py-1.5 text-xs bg-slate-950 border border-slate-800 rounded-lg w-64 focus:outline-none focus:border-cyan-500 font-mono">
+                <a href="../cmdline.csv" download class="px-3 py-1.5 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-slate-950 font-bold text-xs transition-colors">Download Raw CSV</a>
+            </div>
+        </div>
+
+        <div class="flex-1 bg-slate-900 border border-slate-800 rounded-xl overflow-hidden shadow-xl flex flex-col">
+            <div class="overflow-x-auto flex-1">
+                <table class="w-full text-left text-xs border-collapse" id="defTable">
+                    <thead class="bg-slate-800/80 text-slate-300 font-semibold border-b border-slate-700 sticky top-0 backdrop-blur-xs">
+                        <tr>
+                            <th class="p-3 border-r border-slate-700/60">Name</th>
+                            <th class="p-3 border-r border-slate-700/60 w-24">Type</th>
+                            <th class="p-3 border-r border-slate-700/60">Description & Notes</th>
+                            <th class="p-3 border-r border-slate-700/60 w-28">Default</th>
+                            <th class="p-3 w-48">Pattern</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-800/60 text-slate-300 font-mono">
+                        
+            <tr class="hover:bg-slate-800/40 transition-colors">
+                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">--enable-debug-gui</td>
+                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">switch</td>
+                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Enables the developer debug GUI overlay with verbose stats and panels<br><br>Confirmed in VRChat docs and VRCX-0 source</td>
+                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap"></td>
+                <td class="p-3 text-emerald-400 text-[0.7rem] break-all"></td>
+            </tr>
+            <tr class="hover:bg-slate-800/40 transition-colors">
+                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">--enable-sdk-log-levels</td>
+                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">switch</td>
+                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Enables SDK debug log level filtering — required for SDK/Udon log visibility<br><br>Confirmed in VRChat docs and VRCX-0 localization</td>
+                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap"></td>
+                <td class="p-3 text-emerald-400 text-[0.7rem] break-all"></td>
+            </tr>
+            <tr class="hover:bg-slate-800/40 transition-colors">
+                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">--enable-udon-debug-logging</td>
+                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">switch</td>
+                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Enables full verbose debug logging for UdonSharp/Udon programs<br><br>Confirmed in VRChat docs and VRCX-0 localization</td>
+                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap"></td>
+                <td class="p-3 text-emerald-400 text-[0.7rem] break-all"></td>
+            </tr>
+            <tr class="hover:bg-slate-800/40 transition-colors">
+                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">--enable-av-pro-in-proton</td>
+                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">switch</td>
+                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Fixes AVPro video player compatibility under Wine/Proton on Linux<br><br>Linux/Proton-specific; use this on Steam Deck and Linux</td>
+                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap"></td>
+                <td class="p-3 text-emerald-400 text-[0.7rem] break-all"></td>
+            </tr>
+            <tr class="hover:bg-slate-800/40 transition-colors">
+                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">--enable-hw-video-decoding</td>
+                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">switch</td>
+                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Enables hardware-accelerated video decoding for video players (GPU decode)<br><br>Improves performance on supported GPU; common on Linux</td>
+                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap"></td>
+                <td class="p-3 text-emerald-400 text-[0.7rem] break-all"></td>
+            </tr>
+            <tr class="hover:bg-slate-800/40 transition-colors">
+                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">--osc=PORTS</td>
+                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">string</td>
+                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Configures OSC ports: inPort:senderIP:outPort format<br><br>e.g. --osc=9000:127.0.0.1:9001. Required for VRCOSC and other OSC tools</td>
+                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap">9000:127.0.0.1:9001</td>
+                <td class="p-3 text-emerald-400 text-[0.7rem] break-all">^\d{1,5}:[0-9.]+:\d{1,5}$</td>
+            </tr>
+            <tr class="hover:bg-slate-800/40 transition-colors">
+                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">--fps=FPS</td>
+                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">int</td>
+                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Sets the target frame rate cap for VRChat rendering<br><br>Unity engine cap; higher = more CPU/GPU load</td>
+                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap">90</td>
+                <td class="p-3 text-emerald-400 text-[0.7rem] break-all">^(1[5-9]|[2-9]\d|[1-2]\d{2}|3[0-5]\d|360)$</td>
+            </tr>
+            <tr class="hover:bg-slate-800/40 transition-colors">
+                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">--affinity=MASK</td>
+                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">string</td>
+                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Sets CPU thread affinity hex bitmask for the VRChat process — for AMD CPU optimization<br><br>FFFF=16 threads; wrong value causes crashes. Advanced/AMD only</td>
+                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap"></td>
+                <td class="p-3 text-emerald-400 text-[0.7rem] break-all">^[0-9A-Fa-f]{1,16}$</td>
+            </tr>
+            <tr class="hover:bg-slate-800/40 transition-colors">
+                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">--process-priority=LEVEL</td>
+                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">int</td>
+                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Sets the OS process priority level for VRChat<br><br>-2=Idle,-1=Below Normal,0=Normal,1=Above Normal,2=High</td>
+                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap">-1</td>
+                <td class="p-3 text-emerald-400 text-[0.7rem] break-all">^-?[0-2]$</td>
+            </tr>
+            <tr class="hover:bg-slate-800/40 transition-colors">
+                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">--no-steam</td>
+                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">switch</td>
+                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Bypasses Steam client requirement when launching via launch.exe directly<br><br>Only works with the launcher.exe direct launch method</td>
+                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap"></td>
+                <td class="p-3 text-emerald-400 text-[0.7rem] break-all"></td>
+            </tr>
+            <tr class="hover:bg-slate-800/40 transition-colors">
+                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">--profile=NAME</td>
+                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">string</td>
+                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Launches with a separate isolated settings profile directory<br><br>Creates a subfolder in AppData for isolated settings</td>
+                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap">default</td>
+                <td class="p-3 text-emerald-400 text-[0.7rem] break-all">^[A-Za-z0-9_\-]{1,64}$</td>
+            </tr>
+            <tr class="hover:bg-slate-800/40 transition-colors">
+                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">--watch-world=ID</td>
+                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">string</td>
+                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Loads a specific world by ID on startup (e.g. wrld_...)<br><br>Useful for testing — skips startup world loading</td>
+                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap"></td>
+                <td class="p-3 text-emerald-400 text-[0.7rem] break-all">^wrld_[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$</td>
+            </tr>
+            <tr class="hover:bg-slate-800/40 transition-colors">
+                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">--join-or-create=LOCATION</td>
+                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">string</td>
+                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Joins or creates a specific instance from launch<br><br>e.g. wrld_abc:12345~region(us)</td>
+                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap"></td>
+                <td class="p-3 text-emerald-400 text-[0.7rem] break-all">^wrld_[0-9a-f\-]+:[0-9a-zA-Z~()]+$</td>
+            </tr>
+            <tr class="hover:bg-slate-800/40 transition-colors">
+                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">--desktop</td>
+                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">switch</td>
+                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Forces VRChat to launch in Desktop (non-VR) mode<br><br>Overrides HMD auto-detection</td>
+                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap"></td>
+                <td class="p-3 text-emerald-400 text-[0.7rem] break-all"></td>
+            </tr>
+            <tr class="hover:bg-slate-800/40 transition-colors">
+                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">-screen-width N</td>
+                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">int</td>
+                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Sets window/render width in pixels (Unity standard arg)<br><br>Standard Unity standalone player argument</td>
+                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap">1920</td>
+                <td class="p-3 text-emerald-400 text-[0.7rem] break-all">^([6-9]\d{2}|[1-6]\d{3}|7[0-5]\d{2}|7680)$</td>
+            </tr>
+            <tr class="hover:bg-slate-800/40 transition-colors">
+                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">-screen-height N</td>
+                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">int</td>
+                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Sets window/render height in pixels (Unity standard arg)<br><br>Standard Unity standalone player argument</td>
+                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap">1080</td>
+                <td class="p-3 text-emerald-400 text-[0.7rem] break-all">^([3-9]\d{2}|[1-3]\d{3}|4[0-2]\d{2}|4320)$</td>
+            </tr>
+            <tr class="hover:bg-slate-800/40 transition-colors">
+                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">-screen-fullscreen N</td>
+                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">int</td>
+                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Sets fullscreen mode — 0=windowed 1=fullscreen (Unity standard arg)<br><br>Standard Unity standalone player argument</td>
+                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap">1</td>
+                <td class="p-3 text-emerald-400 text-[0.7rem] break-all">^[01]$</td>
+            </tr>
+            <tr class="hover:bg-slate-800/40 transition-colors">
+                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">-monitor N</td>
+                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">int</td>
+                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Selects which monitor to launch on (1-based index) (Unity standard arg)<br><br>Standard Unity standalone player argument</td>
+                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap">1</td>
+                <td class="p-3 text-emerald-400 text-[0.7rem] break-all">^[1-9]\d?$</td>
+            </tr>
+            <tr class="hover:bg-slate-800/40 transition-colors">
+                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">-screen-quality NAME</td>
+                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">string</td>
+                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Sets the initial Unity quality preset to use (Unity standard arg)<br><br>Standard Unity standalone player argument</td>
+                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap"></td>
+                <td class="p-3 text-emerald-400 text-[0.7rem] break-all">^(Fastest|Fast|Simple|Good|Beautiful|Fantastic)$</td>
+            </tr>
+            <tr class="hover:bg-slate-800/40 transition-colors">
+                <td class="p-3 border-r border-slate-800/60 font-semibold text-cyan-300 whitespace-nowrap">-logFile PATH</td>
+                <td class="p-3 border-r border-slate-800/60 text-amber-400 whitespace-nowrap">string</td>
+                <td class="p-3 border-r border-slate-800/60 text-slate-300 font-sans leading-relaxed">Redirects Unity output log to specified file path (Unity standard arg)<br><br>Default: %APPDATA%/LocalLow/VRChat/VRChat/output_log.txt</td>
+                <td class="p-3 border-r border-slate-800/60 text-slate-400 whitespace-nowrap"></td>
+                <td class="p-3 text-emerald-400 text-[0.7rem] break-all">^.+\.log$</td>
+            </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function filterTable() {
+            var input = document.getElementById("searchInput");
+            var filter = input.value.toLowerCase();
+            var rows = document.querySelectorAll("#defTable tbody tr");
+            rows.forEach(function(row) {
+                var text = row.innerText.toLowerCase();
+                row.style.display = text.indexOf(filter) > -1 ? "" : "none";
+            });
+        }
+    </script>
+</body>
+</html>
