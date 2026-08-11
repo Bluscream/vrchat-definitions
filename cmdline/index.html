@@ -202,6 +202,111 @@
                 <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
                 <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all">^.+\.log$</td>
             </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-cyan-300 whitespace-nowrap">-batchmode</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">switch</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Runs the Unity Standalone Player in headless batch mode without displaying a window or accepting user interaction</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all"></td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-cyan-300 whitespace-nowrap">-nographics</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">switch</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Runs batch mode without initializing a graphics device (useful for headless servers/CI without GPUs)</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all"></td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-cyan-300 whitespace-nowrap">-nolog</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">switch</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Disables Unity Standalone Player logging completely</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all"></td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-cyan-300 whitespace-nowrap">-popupwindow</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">switch</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Creates the window as a borderless dialog popup window (Windows only)</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all"></td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-cyan-300 whitespace-nowrap">-single-instance</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">switch</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Ensures only one instance of the application runs at a time; focusing an existing instance if re-launched</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all"></td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-cyan-300 whitespace-nowrap">-force-d3d11</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">switch</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Forces Unity rendering backend to Direct3D 11</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all"></td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-cyan-300 whitespace-nowrap">-force-d3d12</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">switch</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Forces Unity rendering backend to Direct3D 12</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all"></td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-cyan-300 whitespace-nowrap">-force-vulkan</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">switch</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Forces Unity rendering backend to Vulkan</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all"></td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-cyan-300 whitespace-nowrap">-force-glcore</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">switch</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Forces Unity rendering backend to OpenGL Core profile</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all"></td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-cyan-300 whitespace-nowrap">-force-wayland</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">switch</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Activates experimental Wayland display protocol support on Linux</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all"></td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-cyan-300 whitespace-nowrap">-force-gfx-direct</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">switch</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Forces single-threaded graphics rendering mode</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all"></td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-cyan-300 whitespace-nowrap">-disable-gpu-skinning</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">switch</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Disables GPU skinning calculation at startup</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all"></td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-cyan-300 whitespace-nowrap">-window-mode MODE</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">string</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Overrides full-screen windowed mode (accepted: exclusive or borderless)</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all">^(exclusive|borderless)$</td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-cyan-300 whitespace-nowrap">-force-device-index N</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">int</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Forces Standalone Player to use a specific GPU device by passing the 0-based GPU index</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all">^([0-9]|1[0-6])$</td>
+            </tr>
+            <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+                <td class="p-3.5 font-mono font-semibold text-cyan-300 whitespace-nowrap">-timestamps</td>
+                <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">switch</span></td>
+                <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Prefixes every Player log message with the current timestamp and thread ID</td>
+                <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap"><span class="text-slate-600 italic">none</span></td>
+                <td class="p-3.5 font-mono text-emerald-400 text-[0.7rem] break-all"></td>
+            </tr>
                     </tbody>
                 </table>
             </div>
