@@ -37,199 +37,250 @@
     <div class="max-w-7xl w-full mx-auto px-6 py-6 flex-1 flex flex-col gap-5">
         <div class="flex flex-wrap items-center justify-between gap-4 bg-slate-900/80 border border-slate-800 p-5 rounded-2xl shadow-xl">
             <div>
-                <span class="text-xs font-semibold uppercase tracking-wider text-emerald-400">JSON Schema Definition</span>
+                <span class="text-xs font-semibold uppercase tracking-wider text-purple-400">JSON Schema Definition</span>
                 <h1 class="text-2xl font-bold text-white mt-1">VRChat config.json Schema</h1>
             </div>
-            <a href="../config.schema.json" download class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold text-xs transition-colors shadow-lg shadow-emerald-600/20">
-                Download Raw Schema JSON
-            </a>
+            <div class="flex items-center gap-3">
+                <input type="text" id="searchInput" onkeyup="filterTable()" placeholder="Search properties..." class="px-3.5 py-2 text-xs bg-slate-950 border border-slate-800 rounded-xl w-72 focus:outline-none focus:border-purple-500 font-mono text-slate-200">
+                <a href="../config.schema.json" download class="px-4 py-2 rounded-xl bg-purple-600 hover:bg-purple-500 text-slate-950 font-bold text-xs transition-colors shadow-lg shadow-purple-600/20">
+                    Download Raw Schema JSON
+                </a>
+            </div>
         </div>
 
-        <div class="flex-1 bg-slate-900/80 border border-slate-800 rounded-2xl p-6 overflow-y-auto shadow-2xl">
-            <pre class="font-mono text-xs text-emerald-400 leading-relaxed overflow-x-auto p-5 bg-slate-950 rounded-xl border border-slate-800/80">{
-  "$schema": "https://json-schema.org/draft-07/schema#",
-  "$id": "https://gist.github.com/Bluscream/393a8a88b37486f67e9d12b4c615183a/raw/config.schema.json",
-  "title": "VRChat Configuration",
-  "description": "VRChat client configuration file (config.json) schema",
-  "type": "object",
-  "properties": {
-    "cache_size": {
-      "type": "integer",
-      "description": "Maximum cache size in GB",
-      "default": 30,
-      "minimum": 30
-    },
-    "cache_expiry_delay": {
-      "type": "integer",
-      "description": "Number of days before cache expires",
-      "default": 30,
-      "minimum": 30
-    },
-    "cache_directory": {
-      "type": "string",
-      "description": "Path to the VRChat cache directory. Supports environment variables like %AppData%",
-      "default": "%AppData%\\..\\LocalLow\\VRChat\\VRChat",
-      "examples": [
-        "%AppData%\\..\\LocalLow\\VRChat\\VRChat",
-        "D:\\_TEMP\\VRChat",
-        "C:\\VRChat\\Cache"
-      ]
-    },
-    "picture_output_folder": {
-      "type": "string",
-      "description": "Directory where screenshots and photos are saved. Supports environment variables like %UserProfile%",
-      "default": "%UserProfile%\\Pictures\\VRChat",
-      "examples": [
-        "%UserProfile%\\Pictures\\VRChat",
-        "D:\\Pictures\\VRChat",
-        "C:\\Users\\Username\\Pictures\\VRChat"
-      ]
-    },
-    "picture_output_split_by_date": {
-      "type": "boolean",
-      "description": "Whether to organize pictures into subdirectories by date",
-      "default": true
-    },
-    "screenshot_res_width": {
-      "type": "integer",
-      "description": "Screenshot resolution width in pixels",
-      "default": 1920,
-      "minimum": 640,
-      "examples": [1920, 2560, 3840, 7680]
-    },
-    "screenshot_res_height": {
-      "type": "integer",
-      "description": "Screenshot resolution height in pixels",
-      "default": 1080,
-      "minimum": 480,
-      "examples": [1080, 1440, 2160, 4320]
-    },
-    "camera_res_width": {
-      "type": "integer",
-      "description": "Camera resolution width in pixels",
-      "default": 1920,
-      "minimum": 640,
-      "examples": [1920, 2560, 3840, 7680]
-    },
-    "camera_res_height": {
-      "type": "integer",
-      "description": "Camera resolution height in pixels",
-      "default": 1080,
-      "minimum": 480,
-      "examples": [1080, 1440, 2160, 4320]
-    },
-    "camera_spout_res_width": {
-      "type": "integer",
-      "description": "Spout camera output resolution width in pixels",
-      "default": 1920,
-      "minimum": 640,
-      "examples": [1920, 2560, 3840, 7680]
-    },
-    "camera_spout_res_height": {
-      "type": "integer",
-      "description": "Spout camera output resolution height in pixels",
-      "default": 1080,
-      "minimum": 480,
-      "examples": [1080, 1440, 2160, 4320]
-    },
-    "fpv_steadycam_fov": {
-      "type": "integer",
-      "description": "Field of view for first-person steadycam in degrees",
-      "default": 50,
-      "minimum": 30,
-      "maximum": 110
-    },
-    "dynamic_bone_max_affected_transform_count": {
-      "type": "integer",
-      "description": "Dynamic Bones limit for max affected transforms. Set to 0 to disable all transforms. (Deprecated: replaced by PhysBones)",
-      "default": 32,
-      "minimum": 0
-    },
-    "dynamic_bone_max_collider_check_count": {
-      "type": "integer",
-      "description": "Dynamic Bones limit for max collider collisions. Set to 0 to disable all colliders. (Deprecated: replaced by PhysBones)",
-      "default": 8,
-      "minimum": 0
-    },
-    "disableRichPresence": {
-      "type": "boolean",
-      "description": "Disable Discord Rich Presence integration",
-      "default": false
-    },
-    "betas": {
-      "type": "array",
-      "description": "Array of beta features to enable",
-      "items": {
-        "type": "string",
-        "enum": ["particle_system_limiter"]
-      },
-      "examples": [["particle_system_limiter"]]
-    },
-    "ps_max_particles": {
-      "type": "integer",
-      "description": "Maximum number of particles allowed per avatar (Particle System Limiter)",
-      "default": 50000,
-      "minimum": 0
-    },
-    "ps_max_systems": {
-      "type": "integer",
-      "description": "Maximum number of particle systems allowed per avatar (Particle System Limiter)",
-      "default": 200,
-      "minimum": 0
-    },
-    "ps_max_emission": {
-      "type": "integer",
-      "description": "Maximum emission rate per particle system (Particle System Limiter)",
-      "default": 5000,
-      "minimum": 0
-    },
-    "ps_max_total_emission": {
-      "type": "integer",
-      "description": "Maximum total emission rate across all systems (Particle System Limiter)",
-      "default": 40000,
-      "minimum": 0
-    },
-    "ps_mesh_particle_divider": {
-      "type": "integer",
-      "description": "Divider for mesh particle counts (Particle System Limiter)",
-      "default": 60,
-      "minimum": 1
-    },
-    "ps_mesh_particle_poly_limit": {
-      "type": "integer",
-      "description": "Maximum polygon count for mesh particles (Particle System Limiter)",
-      "default": 50000,
-      "minimum": 0
-    },
-    "ps_collision_penalty_high": {
-      "type": "integer",
-      "description": "Penalty value for high-cost collision particles (Particle System Limiter)",
-      "default": 50,
-      "minimum": 0
-    },
-    "ps_collision_penalty_med": {
-      "type": "integer",
-      "description": "Penalty value for medium-cost collision particles (Particle System Limiter)",
-      "default": 30,
-      "minimum": 0
-    },
-    "ps_collision_penalty_low": {
-      "type": "integer",
-      "description": "Penalty value for low-cost collision particles (Particle System Limiter)",
-      "default": 10,
-      "minimum": 0
-    },
-    "ps_trails_penalty": {
-      "type": "integer",
-      "description": "Penalty value for particle trails (Particle System Limiter)",
-      "default": 10,
-      "minimum": 0
-    }
-  },
-  "additionalProperties": true
-}
-</pre>
+        <div class="flex-1 bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden shadow-2xl flex flex-col">
+            <div class="overflow-x-auto flex-1">
+                <table class="w-full text-left text-xs border-collapse" id="defTable">
+                    <thead class="bg-slate-900 text-slate-300 font-semibold border-b border-slate-800 sticky top-0 backdrop-blur-md">
+                        <tr>
+                            <th class="p-3.5 w-56">Property Name</th>
+                            <th class="p-3.5 w-24">Type</th>
+                            <th class="p-3.5">Description & Behavior</th>
+                            <th class="p-3.5 w-32">Default Value</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-800/60 text-slate-300">
+                        
+        <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+            <td class="p-3.5 font-mono font-semibold text-purple-300 whitespace-nowrap">cache_size</td>
+            <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">integer</span></td>
+            <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Maximum cache size in GB</td>
+            <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap">30</td>
+        </tr>
+        <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+            <td class="p-3.5 font-mono font-semibold text-purple-300 whitespace-nowrap">cache_expiry_delay</td>
+            <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">integer</span></td>
+            <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Number of days before cache expires</td>
+            <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap">30</td>
+        </tr>
+        <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+            <td class="p-3.5 font-mono font-semibold text-purple-300 whitespace-nowrap">cache_directory</td>
+            <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">string</span></td>
+            <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Path to the VRChat cache directory. Supports environment variables like %AppData%</td>
+            <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap">%AppData%\..\LocalLow\VRChat\VRChat</td>
+        </tr>
+        <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+            <td class="p-3.5 font-mono font-semibold text-purple-300 whitespace-nowrap">picture_output_folder</td>
+            <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">string</span></td>
+            <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Directory where screenshots and photos are saved. Supports environment variables like %UserProfile%</td>
+            <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap">%UserProfile%\Pictures\VRChat</td>
+        </tr>
+        <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+            <td class="p-3.5 font-mono font-semibold text-purple-300 whitespace-nowrap">picture_output_split_by_date</td>
+            <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">boolean</span></td>
+            <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Whether to organize pictures into subdirectories by date</td>
+            <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap">True</td>
+        </tr>
+        <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+            <td class="p-3.5 font-mono font-semibold text-purple-300 whitespace-nowrap">screenshot_res_width</td>
+            <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">integer</span></td>
+            <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Screenshot resolution width in pixels</td>
+            <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap">1920</td>
+        </tr>
+        <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+            <td class="p-3.5 font-mono font-semibold text-purple-300 whitespace-nowrap">screenshot_res_height</td>
+            <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">integer</span></td>
+            <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Screenshot resolution height in pixels</td>
+            <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap">1080</td>
+        </tr>
+        <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+            <td class="p-3.5 font-mono font-semibold text-purple-300 whitespace-nowrap">camera_res_width</td>
+            <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">integer</span></td>
+            <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Camera resolution width in pixels</td>
+            <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap">1920</td>
+        </tr>
+        <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+            <td class="p-3.5 font-mono font-semibold text-purple-300 whitespace-nowrap">camera_res_height</td>
+            <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">integer</span></td>
+            <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Camera resolution height in pixels</td>
+            <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap">1080</td>
+        </tr>
+        <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+            <td class="p-3.5 font-mono font-semibold text-purple-300 whitespace-nowrap">camera_spout_res_width</td>
+            <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">integer</span></td>
+            <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Spout camera output resolution width in pixels</td>
+            <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap">1920</td>
+        </tr>
+        <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+            <td class="p-3.5 font-mono font-semibold text-purple-300 whitespace-nowrap">camera_spout_res_height</td>
+            <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">integer</span></td>
+            <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Spout camera output resolution height in pixels</td>
+            <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap">1080</td>
+        </tr>
+        <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+            <td class="p-3.5 font-mono font-semibold text-purple-300 whitespace-nowrap">fpv_steadycam_fov</td>
+            <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">integer</span></td>
+            <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Field of view for first-person steadycam in degrees</td>
+            <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap">50</td>
+        </tr>
+        <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+            <td class="p-3.5 font-mono font-semibold text-purple-300 whitespace-nowrap">dynamic_bone_max_affected_transform_count</td>
+            <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">integer</span></td>
+            <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Dynamic Bones limit for max affected transforms. Set to 0 to disable all transforms. (Deprecated: replaced by PhysBones)</td>
+            <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap">32</td>
+        </tr>
+        <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+            <td class="p-3.5 font-mono font-semibold text-purple-300 whitespace-nowrap">dynamic_bone_max_collider_check_count</td>
+            <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">integer</span></td>
+            <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Dynamic Bones limit for max collider collisions. Set to 0 to disable all colliders. (Deprecated: replaced by PhysBones)</td>
+            <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap">8</td>
+        </tr>
+        <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+            <td class="p-3.5 font-mono font-semibold text-purple-300 whitespace-nowrap">disableRichPresence</td>
+            <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">boolean</span></td>
+            <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Disable Discord Rich Presence integration</td>
+            <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap">False</td>
+        </tr>
+        <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+            <td class="p-3.5 font-mono font-semibold text-purple-300 whitespace-nowrap">betas</td>
+            <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">array</span></td>
+            <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Array of beta features to enable</td>
+            <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap">none</td>
+        </tr>
+        <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+            <td class="p-3.5 font-mono font-semibold text-purple-300 whitespace-nowrap">ps_max_particles</td>
+            <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">integer</span></td>
+            <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Maximum number of particles allowed per avatar (Particle System Limiter)</td>
+            <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap">50000</td>
+        </tr>
+        <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+            <td class="p-3.5 font-mono font-semibold text-purple-300 whitespace-nowrap">ps_max_systems</td>
+            <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">integer</span></td>
+            <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Maximum number of particle systems allowed per avatar (Particle System Limiter)</td>
+            <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap">200</td>
+        </tr>
+        <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+            <td class="p-3.5 font-mono font-semibold text-purple-300 whitespace-nowrap">ps_max_emission</td>
+            <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">integer</span></td>
+            <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Maximum emission rate per particle system (Particle System Limiter)</td>
+            <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap">5000</td>
+        </tr>
+        <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+            <td class="p-3.5 font-mono font-semibold text-purple-300 whitespace-nowrap">ps_max_total_emission</td>
+            <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">integer</span></td>
+            <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Maximum total emission rate across all systems (Particle System Limiter)</td>
+            <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap">40000</td>
+        </tr>
+        <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+            <td class="p-3.5 font-mono font-semibold text-purple-300 whitespace-nowrap">ps_mesh_particle_divider</td>
+            <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">integer</span></td>
+            <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Divider for mesh particle counts (Particle System Limiter)</td>
+            <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap">60</td>
+        </tr>
+        <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+            <td class="p-3.5 font-mono font-semibold text-purple-300 whitespace-nowrap">ps_mesh_particle_poly_limit</td>
+            <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">integer</span></td>
+            <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Maximum polygon count for mesh particles (Particle System Limiter)</td>
+            <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap">50000</td>
+        </tr>
+        <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+            <td class="p-3.5 font-mono font-semibold text-purple-300 whitespace-nowrap">ps_collision_penalty_high</td>
+            <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">integer</span></td>
+            <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Penalty value for high-cost collision particles (Particle System Limiter)</td>
+            <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap">50</td>
+        </tr>
+        <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+            <td class="p-3.5 font-mono font-semibold text-purple-300 whitespace-nowrap">ps_collision_penalty_med</td>
+            <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">integer</span></td>
+            <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Penalty value for medium-cost collision particles (Particle System Limiter)</td>
+            <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap">30</td>
+        </tr>
+        <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+            <td class="p-3.5 font-mono font-semibold text-purple-300 whitespace-nowrap">ps_collision_penalty_low</td>
+            <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">integer</span></td>
+            <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Penalty value for low-cost collision particles (Particle System Limiter)</td>
+            <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap">10</td>
+        </tr>
+        <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+            <td class="p-3.5 font-mono font-semibold text-purple-300 whitespace-nowrap">ps_trails_penalty</td>
+            <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">integer</span></td>
+            <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Penalty value for particle trails (Particle System Limiter)</td>
+            <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap">10</td>
+        </tr>
+        <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+            <td class="p-3.5 font-mono font-semibold text-purple-300 whitespace-nowrap">disableSteamRichPresence</td>
+            <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">boolean</span></td>
+            <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Disables Steam Rich Presence updates specifically</td>
+            <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap">False</td>
+        </tr>
+        <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+            <td class="p-3.5 font-mono font-semibold text-purple-300 whitespace-nowrap">disableDiscordRichPresence</td>
+            <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">boolean</span></td>
+            <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Alias for disableRichPresence — disables Discord Rich Presence specifically</td>
+            <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap">False</td>
+        </tr>
+        <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+            <td class="p-3.5 font-mono font-semibold text-purple-300 whitespace-nowrap">spout_output_width</td>
+            <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">integer</span></td>
+            <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Spout video stream output width in pixels (Spout camera integration)</td>
+            <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap">1920</td>
+        </tr>
+        <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+            <td class="p-3.5 font-mono font-semibold text-purple-300 whitespace-nowrap">spout_output_height</td>
+            <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">integer</span></td>
+            <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Spout video stream output height in pixels (Spout camera integration)</td>
+            <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap">1080</td>
+        </tr>
+        <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+            <td class="p-3.5 font-mono font-semibold text-purple-300 whitespace-nowrap">screenshot_format</td>
+            <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">string</span></td>
+            <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Image file format for screenshots and camera photos</td>
+            <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap">png</td>
+        </tr>
+        <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+            <td class="p-3.5 font-mono font-semibold text-purple-300 whitespace-nowrap">picture_output_split_by_world</td>
+            <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">boolean</span></td>
+            <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">Whether to organize screenshots into subfolders by world name/ID</td>
+            <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap">False</td>
+        </tr>
+        <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+            <td class="p-3.5 font-mono font-semibold text-purple-300 whitespace-nowrap">physbones_max_affected_transform_count</td>
+            <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">integer</span></td>
+            <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">PhysBones limit for maximum affected transform count per avatar</td>
+            <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap">256</td>
+        </tr>
+        <tr class="hover:bg-slate-800/50 transition-colors border-b border-slate-800/60">
+            <td class="p-3.5 font-mono font-semibold text-purple-300 whitespace-nowrap">physbones_max_collider_check_count</td>
+            <td class="p-3.5 font-mono text-amber-400 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/40 text-[0.75rem]">integer</span></td>
+            <td class="p-3.5 font-sans text-slate-300 leading-relaxed text-xs">PhysBones limit for maximum collider check count per avatar</td>
+            <td class="p-3.5 font-mono text-slate-400 whitespace-nowrap">64</td>
+        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
+
+    <script>
+        function filterTable() {
+            var input = document.getElementById("searchInput");
+            var filter = input.value.toLowerCase();
+            var rows = document.querySelectorAll("#defTable tbody tr");
+            rows.forEach(function(row) {
+                var text = row.innerText.toLowerCase();
+                row.style.display = text.indexOf(filter) > -1 ? "" : "none";
+            });
+        }
+    </script>
 </body>
 </html>
