@@ -22,8 +22,8 @@ BACKGROUND_DEBUG_LOG_COLLECTION,REG_DWORD,VRChat setting: BACKGROUND_DEBUG_LOG_C
 BACKGROUND_MATERIAL_,REG_BINARY,Default background material/theme ID (can be empty),,
 BACKGROUND_MATERIAL_{userId},REG_BINARY,Custom background material/theme ID for specific user (can be empty),hex: 00,
 BestRegionCache,REG_DWORD,Cached best network region for connection,0x2,
-COLOR_PALETTES_CURRENT_{userId},REG_BINARY,"Currently selected color palette for user (JSON object, can be empty)",,"^(\{.*\}|\[.*\])$"
-COLOR_PALETTES_{userId},REG_BINARY,Custom color palettes saved by user (JSON array),,
+COLOR_PALETTES_CURRENT_{userId},REG_BINARY,"Currently selected color palette for user (JSON object, can be empty)","{""name"":""Default"",""id"":null,""highlights"":""#2BAAC1"",""icons"":""#2BAAC1"",""buttons"":""#2BAAC1"",""backgrounds"":""#125566"",""text"":""#FFFFFF"",""subtext"":""#808080""}","^(\{.*\}|\[.*\])$"
+COLOR_PALETTES_{userId},REG_BINARY,Custom color palettes saved by user (JSON array; empty when none saved),hex: 00,
 COLOR_PALETTE_EVENT_{userId},REG_DWORD,Last color palette event state for user,,
 CosmeticsSectionRedirect_Settings,REG_DWORD,VRChat setting: CosmeticsSectionRedirect_Settings,,
 CosmeticsSectionRedirect_VRCPlus,REG_DWORD,Has been redirected to VRC+ cosmetics section,,
